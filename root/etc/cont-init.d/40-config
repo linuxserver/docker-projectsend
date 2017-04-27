@@ -2,9 +2,12 @@
 
 # create our folders
 mkdir -p \
+	/config/projectsend \
 	/data/projectsend
 
 # copy config files
+[[ ! -e /config/projectsend/sys.config.php ]] && \
+	cp /defaults/config.php /config/projectsend/sys.config.php
 
 PREV_DIR=$(pwd)
 
@@ -23,6 +26,12 @@ cd "${PREV_DIR}" || exit
 # create symlinks
 [[ ! -L /usr/share/webapps/projectsend/upload ]] && \
 	ln -sf /data/projectsend /usr/share/webapps/projectsend/upload
+
+[[ -f /usr/share/webapps/projectsend/includes/sys.config.php ]] && \
+	rm /usr/share/webapps/projectsend/includes/sys.config.php
+[[ ! -L /usr/share/webapps/projectsend/includes/sys.config.php ]] && \
+	ln -sf /config/projectsend/sys.config.php \
+	/usr/share/webapps/projectsend/includes/sys.config.php
 
 # permissions
 chown abc:abc \
