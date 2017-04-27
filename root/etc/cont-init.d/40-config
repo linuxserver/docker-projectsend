@@ -11,23 +11,27 @@ mkdir -p \
 
 PREV_DIR=$(pwd)
 
-	cd /defaults/upload || exit
-	shopt -s globstar nullglob
-	shopt -s dotglob
+cd /defaults/upload || exit
+shopt -s globstar nullglob
+shopt -s dotglob
 	for i in *
- 	do
-	[[ ! -e "/data/projectsend/${i}" ]] && cp -R "${i}" "/data/projectsend/${i}"
-	chown abc:abc "/data/projectsend/${i}"
+	do
+		if [ ! -e "/data/projectsend/${i}" ] ; then
+		cp -R "${i}" "/data/projectsend/${i}"
+		chown abc:abc "/data/projectsend/${i}"
+		fi
 	done
 
-	cd /defaults/custom || exit
-	shopt -s globstar nullglob
+cd /defaults/custom || exit
 	for i in *
- 	do
-	[[ ! -e "/config/projectsend/images/${i}" ]] && cp -R "${i}" "/config/projectsend/images/${i}"
-	chown abc:abc "/config/projectsend/images/${i}"
+	do
+		if [ ! -e "/config/projectsend/images/${i}" ] ; then
+		cp -R "${i}" "/config/projectsend/images/${i}"
+		chown abc:abc "/config/projectsend/images/${i}"
+		fi
 	done
-	shopt -u dotglob
+shopt -u globstar nullglob
+shopt -u dotglob
 
 cd "${PREV_DIR}" || exit
 
