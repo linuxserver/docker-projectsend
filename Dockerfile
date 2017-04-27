@@ -17,7 +17,11 @@ RUN \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/community \
 	php7-gd \
-	php7-pdo_mysql && \
+	php7-ldap \
+	php7-mcrypt \
+	php7-pdo_mysql \
+	php7-xml \
+	php7-xmlrpc && \
 
 # install projectsend
  mkdir -p \
