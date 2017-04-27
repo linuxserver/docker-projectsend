@@ -6,15 +6,10 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
-# set default root password for database
-ENV MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-root}
-
 # install packages
 RUN \
- apk add --no-cache \
+ apk add --no-cache --virtual=build-dependencies \
 	curl \
-	mariadb \
-	mariadb-client \
 	tar && \
 	apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/community \
@@ -33,6 +28,8 @@ RUN \
 	/usr/share/webapps/projectsend --strip-components=1 && \
 
 # cleanup
+ apk del --purge \
+	build-dependencies && \
  rm -rf \
 	/tmp/*
 
@@ -41,4 +38,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 80
-VOLUME /config
+VOLUME /config /data
