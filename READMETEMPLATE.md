@@ -61,8 +61,9 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-Insert a basic user guide here to get a n00b up and running with the software inside the container. DELETE ME
-
+Requires a user and database in either mysql or mariadb.
+On first run go to `<your-ip>/install/make-config.php` and enter your database details.
+More info at [ProjectSend][appurl].
 
 ## Info
 
