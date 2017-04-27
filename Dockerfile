@@ -11,8 +11,12 @@ RUN \
  apk add --no-cache --virtual=build-dependencies \
 	curl \
 	tar && \
-	apk add --no-cache \
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/main \
+	libwebp && \
+ apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/community \
+	php7-gd \
 	php7-pdo_mysql && \
 
 # install projectsend
@@ -27,6 +31,7 @@ RUN \
  /tmp/projectsend.tar.gz -C \
 	/usr/share/webapps/projectsend --strip-components=1 && \
  mv /usr/share/webapps/projectsend/upload /defaults/ && \
+ mv /usr/share/webapps/projectsend/img/custom /defaults/ && \
 
 # cleanup
  apk del --purge \
