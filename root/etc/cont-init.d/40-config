@@ -1,5 +1,35 @@
 #!/usr/bin/with-contenv bash
 
+# create our folders
+mkdir -p \
+	/data/projectsend
+
+# copy config files
+
+PREV_DIR=$(pwd)
+
+	cd /defaults/upload || exit
+	shopt -s globstar nullglob
+	shopt -s dotglob
+	for i in *
+ 	do
+	[[ ! -e "/data/projectsend/${i}" ]] && cp -R "${i}" "/data/projectsend/${i}"
+	chown abc:abc "/data/projectsend/${i}"
+	done
+	shopt -u dotglob
+
+cd "${PREV_DIR}" || exit
+
+# create symlinks
+[[ ! -L /usr/share/webapps/projectsend/upload ]] && \
+	ln -sf /data/projectsend /usr/share/webapps/projectsend/upload
+
 # permissions
-chown -R abc:abc \
-	/usr/share/webapps/projectsend
+chown abc:abc \
+	/data \
+	/data/projectsend
+
+	chown -R abc:abc \
+	/config \
+	/usr/share/webapps/projectsend/includes \
+	/usr/share/webapps/projectsend/upload

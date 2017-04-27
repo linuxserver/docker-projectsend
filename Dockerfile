@@ -26,6 +26,7 @@ RUN \
  tar xf \
  /tmp/projectsend.tar.gz -C \
 	/usr/share/webapps/projectsend --strip-components=1 && \
+ mv /usr/share/webapps/projectsend/upload /defaults/ && \
 
 # cleanup
  apk del --purge \
