@@ -61,8 +61,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 ## Setting up the application
 
-Requires a user and database in either mysql or mariadb.
-On first run go to `<your-ip>/install/make-config.php` and enter your database details.
+Requires a user and database in either mssql, mysql or mariadb.
 More info at [ProjectSend][appurl].
 
 ## Info
