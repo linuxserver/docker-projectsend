@@ -35,11 +35,8 @@ RUN \
 	php5-pdo_dblib \
 	php5-pdo_mysql \
 	php5-pdo_odbc \
-	php5-pdo_pgsql \
-	php5-pdo_sqlite \
 	php5-phar \
 	php5-soap \
-	php5-sqlite3 \
 	php5-xcache \
 	php5-xmlreader \
 	php5-xmlrpc \
