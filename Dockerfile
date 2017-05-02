@@ -6,12 +6,6 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
-# environment settings
-ENV PHP_MEMORY_LIMIT 512M
-ENV MAX_UPLOAD 50M
-ENV PHP_MAX_FILE_UPLOAD 200
-ENV PHP_MAX_POST 100M
-
 # install packages
 RUN \
  apk add --no-cache \
@@ -52,15 +46,6 @@ RUN \
 	php5-zip \
 	tar \
 	wget && \
-
-# configure php
- sed -i \
-	-e "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" \
- 	-e "s|;*upload_max_filesize =.*|upload_max_filesize = ${MAX_UPLOAD}|i" \
-	-e "s|;*max_file_uploads =.*|max_file_uploads = ${PHP_MAX_FILE_UPLOAD}|i" \
-	-e "s|;*post_max_size =.*|post_max_size = ${PHP_MAX_POST}|i" /etc/php5/php.ini \
-	-e "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= 0|i" \
-		/etc/php5/php.ini && \
 
 # configure apache2
  sed -i \

@@ -27,6 +27,7 @@ docker create \
   -v <path to data>:/config \
   -v <path to data>:/data \
   -e PGID=<gid> -e PUID=<uid>  \
+  -e MAX_UPLOAD=<250M> \
   -p 80:80 \
   linuxserver/projectsend
 ```
@@ -45,6 +46,7 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 * `-v /data` - where to store files to share.
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
+* `-e MAX_UPLOAD` to set maximum upload size , default if unset is 250M.
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it projectsend /bin/bash`.
 

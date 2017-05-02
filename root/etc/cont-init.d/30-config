@@ -1,5 +1,18 @@
 #!/usr/bin/with-contenv bash
 
+PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-512M}
+MAX_UPLOAD=${MAX_UPLOAD:-250M}
+PHP_MAX_FILE_UPLOAD=${PHP_MAX_FILE_UPLOAD:-200}
+
+# configure php
+sed -i \
+	-e "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" \
+ 	-e "s|;*upload_max_filesize =.*|upload_max_filesize = ${MAX_UPLOAD}|i" \
+	-e "s|;*max_file_uploads =.*|max_file_uploads = ${PHP_MAX_FILE_UPLOAD}|i" \
+	-e "s|;*post_max_size =.*|post_max_size = ${MAX_UPLOAD}|i" \
+	-e "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= 0|i" \
+		/etc/php5/php.ini
+
 # create our folders
 mkdir -p \
 	/config/projectsend/images \
