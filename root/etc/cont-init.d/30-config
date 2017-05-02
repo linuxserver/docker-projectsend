@@ -2,8 +2,9 @@
 
 # set default values for variables
 PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-512M}
-MAX_UPLOAD=${MAX_UPLOAD:-5120000}
+MAX_UPLOAD=${MAX_UPLOAD:-5000}
 PHP_MAX_FILE_UPLOAD=${PHP_MAX_FILE_UPLOAD:-200}
+USABLE_MAX_UPLOAD="${MAX_UPLOAD//[!0-9]/}"
 
 # create our folders
 mkdir -p \
@@ -14,9 +15,9 @@ mkdir -p \
 # configure php
 sed -i \
 	-e "s#;*memory_limit =.*#memory_limit = ${PHP_MEMORY_LIMIT}#i" \
- 	-e "s#;*upload_max_filesize =.*#upload_max_filesize = ${MAX_UPLOAD}#i" \
+ 	-e "s#;*upload_max_filesize =.*#upload_max_filesize = ${USABLE_MAX_UPLOAD}M#i" \
 	-e "s#;*max_file_uploads =.*#max_file_uploads = ${PHP_MAX_FILE_UPLOAD}#i" \
-	-e "s#;*post_max_size =.*#post_max_size = ${MAX_UPLOAD}#i" \
+	-e "s#;*post_max_size =.*#post_max_size = ${USABLE_MAX_UPLOAD}M#i" \
 	-e "s#;*cgi.fix_pathinfo=.*#cgi.fix_pathinfo= 0#i" \
 		/etc/php5/php.ini
 
@@ -24,8 +25,10 @@ sed -i \
 [[ ! -e /config/projectsend/sys.config.php ]] && \
 	cp /defaults/sys.config.php /config/projectsend/sys.config.php
 sed -i \
-	"s#define('MAX_FILESIZE',.*);#define('MAX_FILESIZE',$MAX_UPLOAD);#g" \
+	"s#define('MAX_FILESIZE',.*);#define('MAX_FILESIZE',$USABLE_MAX_UPLOAD);#g" \
 		/config/projectsend/sys.config.php
+	"s#define('MAX_FILESIZE',.*);#define('MAX_FILESIZE',$USABLE_MAX_UPLOAD);#g" \
+		/var/www/localhost/htdocs/includes/sys.config.sample.php
 
 # copy config
 PREV_DIR=$(pwd)

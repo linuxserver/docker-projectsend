@@ -27,7 +27,7 @@ docker create \
   -v <path to data>:/config \
   -v <path to data>:/data \
   -e PGID=<gid> -e PUID=<uid>  \
-  -e MAX_UPLOAD=<250M> \
+  -e MAX_UPLOAD=<5000> \
   -p 80:80 \
   linuxserver/projectsend
 ```
@@ -46,7 +46,7 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 * `-v /data` - where to store files to share.
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
-* `-e MAX_UPLOAD` to set maximum upload size , default if unset is 250M.
+* `-e MAX_UPLOAD` to set maximum upload size (in MB), default if unset is 5000.
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it projectsend /bin/bash`.
 
@@ -64,7 +64,9 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 ## Setting up the application
 
 Requires a user and database in either mssql, mysql or mariadb.
+
 On first run go to `<your-ip>/install/make-config.php` and enter your database details.
+
 More info at [ProjectSend][appurl].
 
 ## Info

@@ -62,7 +62,7 @@ RUN \
 	/tmp/ProjectSend.tar.gz --strip-components=1 -C /var/www/localhost/htdocs/ && \
  mv /var/www/localhost/htdocs/upload /defaults/ && \
  mv /var/www/localhost/htdocs/img/custom /defaults/  && \
- mv /var/www/localhost/htdocs/includes/sys.config.sample.php /defaults/sys.config.php && \
+ cp /var/www/localhost/htdocs/includes/sys.config.sample.php /defaults/sys.config.php && \
 
 # cleanup
  rm -rf \
