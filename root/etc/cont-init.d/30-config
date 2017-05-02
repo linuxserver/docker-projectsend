@@ -26,8 +26,7 @@ sed -i \
 	cp /defaults/sys.config.php /config/projectsend/sys.config.php
 sed -i \
 	"s#define('MAX_FILESIZE',.*);#define('MAX_FILESIZE',$USABLE_MAX_UPLOAD);#g" \
-		/config/projectsend/sys.config.php
-	"s#define('MAX_FILESIZE',.*);#define('MAX_FILESIZE',$USABLE_MAX_UPLOAD);#g" \
+		/config/projectsend/sys.config.php \
 		/var/www/localhost/htdocs/includes/sys.config.sample.php
 
 # copy config
