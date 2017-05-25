@@ -15,35 +15,35 @@ RUN \
 	apache2 \
 	apache2-utils \
 	curl \
-	php5-apache2@3.5 \
+	php5-apache2 \
 	php5-apcu@3.5 \
-	php5-bcmath@3.5 \
-	php5-bz2@3.5 \
-	php5-cli@3.5 \
-	php5-ctype@3.5 \
-	php5-curl@3.5 \
-	php5-dom@3.5 \
-	php5-gd@3.5 \
-	php5-gettext@3.5 \
-	php5-gmp@3.5 \
-	php5-iconv@3.5 \
-	php5-json@3.5 \
-	php5-mcrypt@3.5 \
+	php5-bcmath \
+	php5-bz2 \
+	php5-cli \
+	php5-ctype \
+	php5-curl \
+	php5-dom \
+	php5-gd \
+	php5-gettext \
+	php5-gmp \
+	php5-iconv \
+	php5-json \
+	php5-mcrypt \
 	php5-memcache@3.5 \
-	php5-mssql@3.5 \
-	php5-mysql@3.5 \
-	php5-odbc@3.5 \
-	php5-openssl@3.5 \
-	php5-pdo_dblib@3.5 \
-	php5-pdo@3.5 \
-	php5-pdo_mysql@3.5 \
-	php5-pdo_odbc@3.5 \
-	php5-phar@3.5 \
-	php5-soap@3.5 \
+	php5-mssql \
+	php5-mysql \
+	php5-odbc \
+	php5-openssl \
+	php5-pdo_dblib \
+	php5-pdo \
+	php5-pdo_mysql \
+	php5-pdo_odbc \
+	php5-phar \
+	php5-soap \
 	php5-xcache@3.5 \
-	php5-xmlreader@3.5 \
-	php5-xmlrpc@3.5 \
-	php5-zip@3.5 \
+	php5-xmlreader \
+	php5-xmlrpc \
+	php5-zip \
 	tar \
 	wget && \
 
