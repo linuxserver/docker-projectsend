@@ -6,14 +6,17 @@ ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
-# install packages
+# add repositories
 RUN \
+ echo "@3.5  http://dl-cdn.alpinelinux.org/alpine/v3.5/main" >> /etc/apk/repositories && \
+
+# install packages
  apk add --no-cache \
 	apache2 \
 	apache2-utils \
 	curl \
 	php5-apache2 \
-	php5-apcu \
+	php5-apcu@3.5 \
 	php5-bcmath \
 	php5-bz2 \
 	php5-cli \
@@ -26,18 +29,18 @@ RUN \
 	php5-iconv \
 	php5-json \
 	php5-mcrypt \
-	php5-memcache \
+	php5-memcache@3.5 \
 	php5-mssql \
 	php5-mysql \
 	php5-odbc \
 	php5-openssl \
-	php5-pdo \
 	php5-pdo_dblib \
+	php5-pdo \
 	php5-pdo_mysql \
 	php5-pdo_odbc \
 	php5-phar \
 	php5-soap \
-	php5-xcache \
+	php5-xcache@3.5 \
 	php5-xmlreader \
 	php5-xmlrpc \
 	php5-zip \
