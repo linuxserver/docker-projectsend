@@ -1,10 +1,10 @@
-FROM lsiobase/alpine:3.6
-MAINTAINER sparklyballs
+FROM lsiobase/alpine:3.7
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="sparklyballs"
 
 # copy patches
 COPY patches/ /tmp/patches/
@@ -14,8 +14,8 @@ ARG APCU_VER="4.0.11"
 ARG MEMCACHE_VER="3.0.8"
 ARG XCACHE_VER="3.2.0"
 
-# install build packages
 RUN \
+ echo "**** install build packages ****" && \
  apk add --no-cache --virtual=build-dependencies \
 	autoconf \
 	automake \
@@ -28,8 +28,7 @@ RUN \
 	make \
 	php5-dev \
 	zlib-dev && \
-
-# install runtime packages
+ echo "**** install runtime packages ****" && \
  apk add --no-cache \
 	apache2 \
 	apache2-utils \
@@ -63,8 +62,7 @@ RUN \
 	re2c \
 	tar \
 	wget && \
-
-# configure php and apache2
+ echo "**** configure php and apache2 ****" && \
  ln -sf /usr/bin/php5 /usr/bin/php && \
  sed -i \
 	-e 's#User apache#User abc#g' \
@@ -73,8 +71,7 @@ RUN \
 	-e 's/#LoadModule\ rewrite_module/LoadModule\ rewrite_module/' \
 		/etc/apache2/httpd.conf && \
  sed -i 's#PidFile "/run/.*#Pidfile "/var/run/apache2/httpd.pid"#g'  /etc/apache2/conf.d/mpm.conf && \
-
-# compile php5-apcu
+ echo "**** compile php modules ****" && \
  mkdir -p \
 	/tmp/apcu-src && \
  curl -o \
@@ -91,8 +88,6 @@ RUN \
  make && \
  make install && \
  echo "extension=apcu.so" > /etc/php5/conf.d/apcu.ini && \
-
-# compile php5-memcache
  mkdir -p \
 	/tmp/memcache-src && \
  curl -o \
@@ -110,8 +105,6 @@ RUN \
  make && \
  make install && \
  echo "extension=memcache.so" > /etc/php5/conf.d/memcache.ini && \
-
-# compile php5-xcache
  mkdir -p \
  /tmp/xcache-src && \
  curl -o \
@@ -133,8 +126,7 @@ RUN \
  make && \
  make install && \
  install -Dm644 /tmp/patches/xcache.ini /etc/php5/conf.d/xcache.ini && \
-
-# install projectsend
+ echo "**** install projectsend ****" && \
  rm /var/www/localhost/htdocs/index.html && \
  curl -o \
  /tmp/ProjectSend.tar.gz -L \
@@ -144,8 +136,7 @@ RUN \
  mv /var/www/localhost/htdocs/upload /defaults/ && \
  mv /var/www/localhost/htdocs/img/custom /defaults/  && \
  cp /var/www/localhost/htdocs/includes/sys.config.sample.php /defaults/sys.config.php && \
-
-# cleanup
+ echo "**** cleanup ****" && \
  apk del --purge \
 	build-dependencies && \
  rm -rf \

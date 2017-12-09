@@ -84,4 +84,5 @@ More info at [ProjectSend][appurl].
 
 ## Versions
 
++ **09.12.17:** Rebase to alpine 3.7.
 + **13.06.17:** Initial Release.
