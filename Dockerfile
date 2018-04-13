@@ -130,7 +130,7 @@ RUN \
  rm /var/www/localhost/htdocs/index.html && \
  curl -o \
  /tmp/ProjectSend.tar.gz -L \
-	"https://codeload.github.com/ignacionelson/ProjectSend/tar.gz/r756" && \
+	"https://codeload.github.com/ignacionelson/ProjectSend/tar.gz/r1053" && \
  tar -zxf \
 	/tmp/ProjectSend.tar.gz --strip-components=1 -C /var/www/localhost/htdocs/ && \
  mv /var/www/localhost/htdocs/upload /defaults/ && \
