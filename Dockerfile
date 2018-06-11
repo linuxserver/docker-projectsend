@@ -128,9 +128,11 @@ RUN \
  install -Dm644 /tmp/patches/xcache.ini /etc/php5/conf.d/xcache.ini && \
  echo "**** install projectsend ****" && \
  rm /var/www/localhost/htdocs/index.html && \
+ PROJS_TAG=$(curl -sX GET "https://api.github.com/repos/projectsend/projectsend/releases/latest" \
+	| awk '/tag_name/{print $4;exit}' FS='[""]') && \
  curl -o \
  /tmp/ProjectSend.tar.gz -L \
-	"https://codeload.github.com/ignacionelson/ProjectSend/tar.gz/r1053" && \
+	"https://github.com/projectsend/projectsend/archive/$PROJS_TAG.tar.gz" && \
  tar -zxf \
 	/tmp/ProjectSend.tar.gz --strip-components=1 -C /var/www/localhost/htdocs/ && \
  mv /var/www/localhost/htdocs/upload /defaults/ && \
