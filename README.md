@@ -46,6 +46,8 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 * `-v /data` - where to store files to share.
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
+* `-e DB_HOST` for database hostname
+* `-e DB_PASSWORD` for database password
 * `-e MAX_UPLOAD` to set maximum upload size (in MB), default if unset is 5000.
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it projectsend /bin/bash`.
@@ -65,9 +67,52 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 Requires a user and database in either mssql, mysql or mariadb.
 
-On first run go to `<your-ip>/install/make-config.php` and enter your database details.
+Following environment variables can be used to configure database connection:
+
+* `DB_DRIVER` - value can be `mssql` or `mysql` (default: mssql)
+* `DB_HOST` - database hostname (must be specified)
+* `DB_NAME` - name of the database (default: projectsend)
+* `DB_USER` - database username (default: root)
+* `DB_PASSWORD` - database password (must be specified)
+
+On first run go to `http://<your-ip>` and finish installation wizard.
 
 More info at [ProjectSend][appurl].
+
+## Sample docker-compose.yml
+
+This is example of `docker-compose.yml` file to run ProjectSend with [MariaDB](https://hub.docker.com/_/mariadb/):
+
+```yml
+version: '2'
+
+services:
+   db:
+     image: mariadb:10.2.14
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: change_me
+       MYSQL_DATABASE: projectsend
+
+   projectsend:
+     depends_on:
+       - db
+     image: linuxserver/projectsend:latest
+     ports:
+       - "8000:80"
+     restart: always
+     volumes:
+       - project_send_data:/data
+     environment:
+       DB_HOST: db
+       DB_PASSWORD: change_me
+
+volumes:
+    db_data:
+    project_send_data:
+```
 
 ## Info
 
@@ -83,7 +128,7 @@ More info at [ProjectSend][appurl].
 `docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/projectsend`
 
 ## Versions
-
++ **04.10.18:** Adapt startup script to changes in ProjectSend r1053
 + **11.06.17:** Fetch version from github.
 + **09.12.17:** Rebase to alpine 3.7.
 + **13.06.17:** Initial Release.

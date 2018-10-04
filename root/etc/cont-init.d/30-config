@@ -1,6 +1,11 @@
 #!/usr/bin/with-contenv bash
 
 # set default values for variables
+DB_DRIVER=${DB_DRIVER:-mysql}
+DB_HOST=${DB_HOST:?Mandatory environment variable is missing!}
+DB_NAME=${DB_NAME:-projectsend}
+DB_USER=${DB_USER:-root}
+DB_PASSWORD=${DB_PASSWORD:?Mandatory environment variable is missing!}
 PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-512M}
 MAX_UPLOAD=${MAX_UPLOAD:-5000}
 PHP_MAX_FILE_UPLOAD=${PHP_MAX_FILE_UPLOAD:-200}
@@ -24,6 +29,32 @@ sed -i \
 # configure projectsend
 [[ ! -e /config/projectsend/sys.config.php ]] && \
 	cp /defaults/sys.config.php /config/projectsend/sys.config.php
+
+sed -i \
+        "s#define('DB_DRIVER',.*);#define('DB_DRIVER','$DB_DRIVER');#g" \
+                /config/projectsend/sys.config.php \
+                /var/www/localhost/htdocs/includes/sys.config.sample.php
+
+sed -i \
+        "s#define('DB_HOST',.*);#define('DB_HOST','$DB_HOST');#g" \
+                /config/projectsend/sys.config.php \
+                /var/www/localhost/htdocs/includes/sys.config.sample.php
+
+sed -i \
+        "s#define('DB_NAME',.*);#define('DB_NAME','$DB_NAME');#g" \
+                /config/projectsend/sys.config.php \
+                /var/www/localhost/htdocs/includes/sys.config.sample.php
+
+sed -i \
+        "s#define('DB_USER',.*);#define('DB_USER','$DB_USER');#g" \
+                /config/projectsend/sys.config.php \
+                /var/www/localhost/htdocs/includes/sys.config.sample.php
+
+sed -i \
+        "s#define('DB_PASSWORD',.*);#define('DB_PASSWORD','$DB_PASSWORD');#g" \
+                /config/projectsend/sys.config.php \
+                /var/www/localhost/htdocs/includes/sys.config.sample.php
+
 sed -i \
 	"s#define('MAX_FILESIZE',.*);#define('MAX_FILESIZE',$USABLE_MAX_UPLOAD);#g" \
 		/config/projectsend/sys.config.php \
