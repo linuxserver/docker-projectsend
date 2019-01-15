@@ -11,8 +11,8 @@ pipeline {
     BUILDS_DISCORD=credentials('build_webhook_url')
     GITHUB_TOKEN=credentials('498b4638-2d02-4ce5-832d-8a57d01d97ab')
     EXT_GIT_BRANCH = 'master'
-    EXT_USER = 'ignacionelson'
-    EXT_REPO = 'ProjectSend'
+    EXT_USER = 'projectsend'
+    EXT_REPO = 'projectsend'
     BUILD_VERSION_ARG = 'PROJECTSEND_RELEASE'
     LS_USER = 'linuxserver'
     LS_REPO = 'docker-projectsend'
