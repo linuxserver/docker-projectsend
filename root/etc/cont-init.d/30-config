@@ -21,14 +21,6 @@ sed -i \
 	-e "s#;*cgi.fix_pathinfo=.*#cgi.fix_pathinfo= 0#i" \
 		/etc/php5/php.ini
 
-# configure projectsend
-[[ ! -e /config/projectsend/sys.config.php ]] && \
-	cp /defaults/sys.config.php /config/projectsend/sys.config.php
-sed -i \
-	"s#define('MAX_FILESIZE',.*);#define('MAX_FILESIZE',$USABLE_MAX_UPLOAD);#g" \
-		/config/projectsend/sys.config.php \
-		/var/www/localhost/htdocs/includes/sys.config.sample.php
-
 # copy config
 PREV_DIR=$(pwd)
 
