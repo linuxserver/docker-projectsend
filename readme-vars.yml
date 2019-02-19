@@ -1,0 +1,60 @@
+---
+
+# project information
+project_name: projectsend
+project_url: "http://www.projectsend.org"
+project_logo: "http://www.projectsend.org/wp-content/themes/projectsend/img/screenshots.png"
+project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is a self-hosted application that lets you upload files and assign them to specific clients that you create yourself. Secure, private and easy. No more depending on external services or e-mail to send those files."
+project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+project_blurb_optional_extras_enabled: false
+
+# supported architectures
+available_architectures:
+  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
+  - { arch: "{{ arch_armhf }}", tag: "arm32v6-latest"}
+
+# development version
+development_versions: false
+
+# container parameters
+common_param_env_vars_enabled: true
+param_container_name: "{{ project_name }}"
+param_usage_include_net: false
+param_usage_include_env: true
+param_env_vars:
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
+  - { env_var: "MAX_UPLOAD", env_value: "<5000>", desc: "To set maximum upload size (in MB), default if unset is 5000." }
+param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where to store projectsend config files." }
+  - { vol_path: "/data", vol_host_path: "<path to data>", desc: "Where to store files to share." }
+param_usage_include_ports: true
+param_ports:
+  - { external_port: "80", internal_port: "80", port_desc: "WebUI" }
+param_device_map: false
+cap_add_param: false
+
+# optional container parameters
+opt_param_usage_include_env: false
+opt_param_usage_include_vols: false
+opt_param_usage_include_ports: false
+opt_param_device_map: false
+opt_cap_add_param: false
+optional_block_1: false
+
+# application setup block
+app_setup_block_enabled: true
+app_setup_block: |
+  Requires a user and database in either mssql, mysql or mariadb.
+
+  On first run go to `<your-ip>/install/make-config.php` and enter your database details.
+
+  More info at [ProjectSend]({{ project_url }}).
+
+# changelog
+changelogs:
+  - { date: "11.02.19:", desc: "Add pipeline logic and multi arch." }
+  - { date: "11.06.17:", desc: "Fetch version from github." }
+  - { date: "09.12.17:", desc: "Rebase to alpine 3.7." }
+  - { date: "13.06.17:", desc: "Initial Release." }
