@@ -1,7 +1,7 @@
 alpine-baselayout-3.1.0-r0
 alpine-keys-2.1-r1
-apache2-2.4.38-r3
-apache2-utils-2.4.38-r3
+apache2-2.4.39-r0
+apache2-utils-2.4.39-r0
 apk-tools-2.10.1-r0
 apr-1.6.3-r1
 apr-util-1.6.1-r3
@@ -75,7 +75,7 @@ ssl_client-1.28.4-r3
 tar-1.32-r0
 tzdata-2018f-r0
 unixodbc-2.3.5-r0
-wget-1.20.1-r0
+wget-1.20.3-r0
 xz-5.2.4-r0
 xz-libs-5.2.4-r0
 zlib-1.2.11-r1
