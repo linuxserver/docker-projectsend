@@ -23,7 +23,7 @@ libgcc-6.4.0-r9
 libintl-0.19.8.1-r2
 libjpeg-turbo-1.5.3-r4
 libmcrypt-2.5.8-r7
-libpng-1.6.34-r1
+libpng-1.6.37-r0
 libressl2.7-libcrypto-2.7.5-r0
 libressl2.7-libssl-2.7.5-r0
 libressl2.7-libtls-2.7.5-r0
@@ -73,7 +73,7 @@ scanelf-1.2.3-r0
 shadow-4.5-r0
 ssl_client-1.28.4-r3
 tar-1.32-r0
-tzdata-2018i-r0
+tzdata-2019a-r0
 unixodbc-2.3.5-r0
 wget-1.20.3-r0
 xz-5.2.4-r0
