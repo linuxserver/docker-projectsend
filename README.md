@@ -54,6 +54,10 @@ docker create \
   -e PGID=1000 \
   -e TZ=Europe/London \
   -e MAX_UPLOAD=<5000> \
+  -e DB_HOST=mariadb \
+  -e DB_NAME=projectsend \
+  -e DB_USER=dbuser \
+  -e DB_PASSWORD=dbuser-password \
   -p 80:80 \
   -v <path to data>:/config \
   -v <path to data>:/data \
@@ -78,6 +82,10 @@ services:
       - PGID=1000
       - TZ=Europe/London
       - MAX_UPLOAD=<5000>
+      - DB_HOST=mariadb
+      - DB_NAME=projectsend
+      - DB_USER=dbuser
+      - DB_PASSWORD=dbuser-password
     volumes:
       - <path to data>:/config
       - <path to data>:/data
@@ -97,6 +105,10 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
 | `-e MAX_UPLOAD=<5000>` | To set maximum upload size (in MB), default if unset is 5000. |
+| `-e DB_HOST=mariadb` | Set your database location here using IP,hostname or docker container name |
+| `-e DB_NAME=projectsend` | Pre-existing database name, default if unset is projectsend. |
+| `-e DB_USER=dbuser` | Database user with permissions on above database, default if unset is root. |
+| `-e DB_PASSWORD=dbuser-password` | Password for above user. |
 | `-v /config` | Where to store projectsend config files. |
 | `-v /data` | Where to store files to share. |
 
@@ -117,10 +129,8 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 &nbsp;
 ## Application Setup
 
-Requires a user and database in either mssql, mysql or mariadb.
-
-On first run go to `<your-ip>/install/make-config.php` and enter your database details.
-
+You are required to setup a database in either mysql or mariadb with appropriate permissions before install.
+The webui will be available at http://<IP>:<HOST_PORT>/ to complete setup. 
 More info at [ProjectSend](http://www.projectsend.org).
 
 
@@ -186,6 +196,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **12.06.19:** - Adapt startup script to changes in ProjectSend r1053 - Thanks to tomkuba
 * **23.03.19:** - Switching to new Base images, shift to arm32v7 tag.
 * **11.02.19:** - Add pipeline logic and multi arch.
 * **11.06.17:** - Fetch version from github.

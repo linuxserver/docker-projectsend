@@ -25,6 +25,10 @@ param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
   - { env_var: "MAX_UPLOAD", env_value: "<5000>", desc: "To set maximum upload size (in MB), default if unset is 5000." }
+  - { env_var: "DB_HOST", env_value: "mariadb", desc: "Set your database location here using IP,hostname or docker container name" }
+  - { env_var: "DB_NAME", env_value: "projectsend", desc: "Pre-existing database name, default if unset is projectsend." }
+  - { env_var: "DB_USER", env_value: "dbuser", desc: "Database user with permissions on above database, default if unset is root." }
+  - { env_var: "DB_PASSWORD", env_value: "dbuser-password", desc: "Password for above user." }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where to store projectsend config files." }
@@ -46,14 +50,13 @@ optional_block_1: false
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  Requires a user and database in either mssql, mysql or mariadb.
-
-  On first run go to `<your-ip>/install/make-config.php` and enter your database details.
-
+  You are required to setup a database in either mysql or mariadb with appropriate permissions before install.
+  The webui will be available at http://<IP>:<HOST_PORT>/ to complete setup. 
   More info at [ProjectSend]({{ project_url }}).
 
 # changelog
 changelogs:
+  - { date: "12.06.19:", desc: "Adapt startup script to changes in ProjectSend r1053 - Thanks to tomkuba" }
   - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
   - { date: "11.02.19:", desc: "Add pipeline logic and multi arch." }
   - { date: "11.06.17:", desc: "Fetch version from github." }
