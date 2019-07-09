@@ -16,7 +16,7 @@ freetype-2.9.1-r1
 gmp-6.1.2-r1
 libacl-2.2.52-r5
 libattr-2.4.47-r7
-libbz2-1.0.6-r6
+libbz2-1.0.6-r7
 libc-utils-0.7.1-r0
 libcurl-7.61.1-r2
 libgcc-6.4.0-r9
