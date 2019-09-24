@@ -10,7 +10,7 @@ busybox-1.28.4-r3
 ca-certificates-20190108-r0
 coreutils-8.29-r2
 curl-7.61.1-r3
-expat-2.2.7-r1
+expat-2.2.8-r0
 freetds-1.00.87-r0
 freetype-2.9.1-r1
 gmp-6.1.2-r1
