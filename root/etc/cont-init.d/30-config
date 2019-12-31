@@ -19,7 +19,7 @@ sed -i \
 	-e "s#;*max_file_uploads =.*#max_file_uploads = ${PHP_MAX_FILE_UPLOAD}#i" \
 	-e "s#;*post_max_size =.*#post_max_size = ${USABLE_MAX_UPLOAD}M#i" \
 	-e "s#;*cgi.fix_pathinfo=.*#cgi.fix_pathinfo= 0#i" \
-		/etc/php5/php.ini
+		/etc/php7/php.ini
 
 # copy config
 PREV_DIR=$(pwd)
