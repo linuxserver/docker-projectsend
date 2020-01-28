@@ -21,7 +21,7 @@ libc-utils-0.7.1-r0
 libcurl-7.61.1-r3
 libgcc-6.4.0-r9
 libintl-0.19.8.1-r2
-libjpeg-turbo-1.5.3-r5
+libjpeg-turbo-1.5.3-r6
 libmcrypt-2.5.8-r7
 libpng-1.6.37-r0
 libressl2.7-libcrypto-2.7.5-r0
