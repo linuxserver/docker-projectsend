@@ -114,6 +114,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-v /config` | Where to store projectsend config files. |
 | `-v /data` | Where to store files to share. |
 
+
 ## Environment variables from files (Docker secrets)
 
 You can set any environment variable from a file by using a special prepend `FILE__`. 
