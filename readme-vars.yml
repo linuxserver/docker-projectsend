@@ -46,14 +46,15 @@ optional_block_1: false
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
-  Requires a user and database in either mssql, mysql or mariadb.
-
-  On first run go to `<your-ip>/install/make-config.php` and enter your database details.
+  *IMPORTANT* This image no longer supports MSSQL since being migrated to PHP7, if you want MSSQL support please use the tag `linuxserver/projectsend:r1053-ls27`
+  
+  Requires a user and database in either mysql or mariadb.
 
   More info at [ProjectSend]({{ project_url }}).
 
 # changelog
 changelogs:
+  - { date: "31.12.19:", desc: "Rebase to Alpine 3.11 and upgrade to PHP7." }
   - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
   - { date: "11.02.19:", desc: "Add pipeline logic and multi arch." }
   - { date: "11.06.17:", desc: "Fetch version from github." }
