@@ -104,7 +104,7 @@ tar-1.32-r1
 tzdata-2020a-r0
 unixodbc-2.3.7-r2
 unrar-5.9.2-r0
-unzip-6.0-r7
+unzip-6.0-r8
 wget-1.20.3-r1
 xz-5.2.5-r0
 xz-libs-5.2.5-r0
