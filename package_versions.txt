@@ -16,7 +16,7 @@ curl-7.69.1-r1
 db-5.3.28-r1
 expat-2.2.9-r1
 freetds-1.1.40-r0
-freetype-2.10.2-r0
+freetype-2.10.4-r0
 gmp-6.2.0-r0
 jq-1.6-r1
 libacl-2.2.53-r0
@@ -59,7 +59,7 @@ musl-utils-1.1.24-r9
 ncurses-libs-6.2_p20200523-r0
 ncurses-terminfo-base-6.2_p20200523-r0
 nghttp2-libs-1.41.0-r0
-oniguruma-6.9.5-r1
+oniguruma-6.9.5-r2
 pcre-8.44-r0
 pcre2-10.35-r0
 php7-7.3.23-r0
