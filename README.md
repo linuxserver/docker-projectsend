@@ -228,6 +228,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **23.01.21:** - Rebasing to alpine 3.13.
 * **01.06.20:** - Rebasing to alpine 3.12.
 * **31.12.19:** - Rebase to Alpine 3.11 and upgrade to PHP7.
 * **23.03.19:** - Switching to new Base images, shift to arm32v7 tag.
