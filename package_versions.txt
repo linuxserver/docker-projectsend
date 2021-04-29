@@ -31,7 +31,7 @@ libgcc-10.2.1_pre1-r3
 libice-1.0.10-r0
 libidn2-2.3.0-r0
 libintl-0.20.2-r2
-libjpeg-turbo-2.0.6-r0
+libjpeg-turbo-2.1.0-r0
 libmcrypt-2.5.8-r9
 libmemcached-libs-1.0.18-r4
 libpng-1.6.37-r1
