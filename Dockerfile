@@ -59,7 +59,7 @@ RUN \
  rm /var/www/localhost/htdocs/index.html && \
  curl -o \
  /tmp/ProjectSend.zip -L \
-	"https://www.projectsend.org/download/310/" && \
+	"https://www.projectsend.org/download/387/" && \
  unzip \
 	/tmp/ProjectSend.zip -d /var/www/localhost/htdocs/ && \
  mv /var/www/localhost/htdocs/upload /defaults/ && \
