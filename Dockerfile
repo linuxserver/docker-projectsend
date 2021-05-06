@@ -63,7 +63,6 @@ RUN \
  unzip \
 	/tmp/ProjectSend.zip -d /var/www/localhost/htdocs/ && \
  mv /var/www/localhost/htdocs/upload /defaults/ && \
- mv /var/www/localhost/htdocs/img/custom /defaults/  && \
  #cp /var/www/localhost/htdocs/includes/sys.config.sample.php /defaults/sys.config.php && \
  echo "**** cleanup ****" && \
  rm -rf \
