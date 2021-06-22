@@ -59,4 +59,4 @@ chown abc:abc \
 chown -R abc:abc \
 	/config
 
-  find /app -type f | xargs -P $(nproc) -I {} chown abc:abc {}
+find /app -print0 | xargs -P "$(nproc)" -I {} -0 chown abc:abc {}
