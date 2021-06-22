@@ -31,9 +31,9 @@ shopt -s globstar nullglob
 shopt -s dotglob
 	for i in *
 	do
-		if [ ! -e "/data/${i}" ] ; then
-		cp -R "${i}" "/data/${i}"
-		chown abc:abc "/data/${i}"
+		if [ ! -e "/data/projectsend/${i}" ] ; then
+		cp -R "${i}" "/data/projectsend/${i}"
+		chown abc:abc "/data/projectsend/${i}"
 		fi
 	done
 
@@ -44,7 +44,7 @@ cd "${PREV_DIR}" || exit
 
 # create symlinks
 [[ ! -L /app/projectsend/upload ]] && \
-	ln -sf /data /app/projectsend/upload
+	ln -sf /data/projectsend /app/projectsend/upload
 
 [[ -f /app/projectsend/includes/sys.config.php ]] && \
 	rm /app/projectsend/includes/sys.config.php
@@ -53,7 +53,7 @@ cd "${PREV_DIR}" || exit
 
 # permissions
 chown abc:abc \
-	/data
+	/data/projectsend
 
 chown -R abc:abc \
 	/config
