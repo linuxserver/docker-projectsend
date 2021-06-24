@@ -42,7 +42,7 @@ RUN \
   mkdir -p /app/projectsend && \
   if [ -z ${PROJECTSEND_VERSION+x} ]; then \
     PROJECTSEND_VERSION=$(curl -sX GET "https://api.github.com/repos/projectsend/projectsend/releases/latest" \
-    | awk '/tag_name/{print $4;exit}' FS='[""]'; \
+    | awk '/tag_name/{print $4;exit}' FS='[""]'); \
   fi && \
   curl -s -o \
     /tmp/projectsend.zip -L \
