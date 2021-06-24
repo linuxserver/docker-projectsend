@@ -54,6 +54,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "24.06.21:", desc: "Rebasing to alpine 3.14, switch to nginx"}
   - { date: "23.01.21:", desc: "Rebasing to alpine 3.13." }
   - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }
   - { date: "31.12.19:", desc: "Rebase to Alpine 3.11 and upgrade to PHP7." }
