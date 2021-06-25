@@ -16,22 +16,22 @@ RUN \
   php7-cli \
   php7-ctype \
   php7-curl \
-  php7-dom \   
+  php7-dom \
   php7-fileinfo \
-	php7-gd \
-	php7-gettext \
-  php7-gmp \  
-	php7-json \  
-	php7-iconv \
+  php7-gd \
+  php7-gettext \
+  php7-gmp \
+  php7-json \
+  php7-iconv \
   php7-mbstring \
-	php7-mcrypt \
-	php7-mysqli \
-	php7-openssl \
-	php7-pdo \
-	php7-pdo_dblib \
-	php7-pdo_mysql \
-	php7-pecl-apcu \
-	php7-pecl-memcached \
+  php7-mcrypt \
+  php7-mysqli \
+  php7-openssl \
+  php7-pdo \
+  php7-pdo_dblib \
+  php7-pdo_mysql \
+  php7-pecl-apcu \
+  php7-pecl-memcached \
   php7-phar \
   php7-soap \
   php7-xmlreader \
