@@ -8,18 +8,21 @@ USABLE_MAX_UPLOAD=${MAX_UPLOAD//[!0-9]/}
 
 # create our folders
 mkdir -p \
-	/config/projectsend/images \
-	/data/projectsend \
-	/var/run/apache2
+	/config/projectsend \
+  /data/projectsend
 
 # configure php
 sed -i \
 	-e "s#;*memory_limit =.*#memory_limit = ${PHP_MEMORY_LIMIT}#i" \
- 	-e "s#;*upload_max_filesize =.*#upload_max_filesize = ${USABLE_MAX_UPLOAD}M#i" \
+  -e "s#;*upload_max_filesize =.*#upload_max_filesize = ${USABLE_MAX_UPLOAD}M#i" \
 	-e "s#;*max_file_uploads =.*#max_file_uploads = ${PHP_MAX_FILE_UPLOAD}#i" \
 	-e "s#;*post_max_size =.*#post_max_size = ${USABLE_MAX_UPLOAD}M#i" \
 	-e "s#;*cgi.fix_pathinfo=.*#cgi.fix_pathinfo= 0#i" \
 		/etc/php7/php.ini
+
+if ! grep -q 'config-v1' /config/nginx/site-confs/default; then
+    cp /defaults/default /config/nginx/site-confs
+fi
 
 # copy config
 PREV_DIR=$(pwd)
@@ -35,37 +38,26 @@ shopt -s dotglob
 		fi
 	done
 
-cd /defaults/custom || exit
-	for i in *
-	do
-		if [ ! -e "/config/projectsend/images/${i}" ] ; then
-		cp -R "${i}" "/config/projectsend/images/${i}"
-		chown abc:abc "/config/projectsend/images/${i}"
-		fi
-	done
 shopt -u globstar nullglob
 shopt -u dotglob
 
 cd "${PREV_DIR}" || exit
 
 # create symlinks
-[[ ! -L /var/www/localhost/htdocs/upload ]] && \
-	ln -sf /data/projectsend /var/www/localhost/htdocs/upload
-[[ ! -L /var/www/localhost/htdocs/img/custom ]] && \
-	ln -sf /config/projectsend/images /var/www/localhost/htdocs/img/custom
+[[ ! -L /app/projectsend/upload ]] && \
+	ln -sf /data/projectsend /app/projectsend/upload
 
-[[ -f /var/www/localhost/htdocs/includes/sys.config.php ]] && \
-	rm /var/www/localhost/htdocs/includes/sys.config.php
-[[ ! -L /var/www/localhost/htdocs/includes/sys.config.php ]] && \
-	ln -sf /config/projectsend/sys.config.php \
-	/var/www/localhost/htdocs/includes/sys.config.php
+[[ -f /app/projectsend/includes/sys.config.php ]] && \
+	rm /app/projectsend/includes/sys.config.php
+[[ ! -L /app/projectsend/includes/sys.config.php ]] && \
+	ln -sf /config/projectsend/sys.config.php /app/projectsend/includes/sys.config.php
 
 # permissions
 chown abc:abc \
-	/data \
 	/data/projectsend
 
-	chown -R abc:abc \
-	/config \
-	/var/run/apache2 \
-	/var/www/localhost/htdocs
+chown -R abc:abc \
+	/config
+
+find /app -print0 | xargs -P "$(nproc)" -I {} -0 chown -h abc:abc {}
+find /app -print0 -type d | xargs -P "$(nproc)" -I {} -0 chown -h abc:abc {}
