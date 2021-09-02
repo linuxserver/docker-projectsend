@@ -1,5 +1,11 @@
 #!/usr/bin/with-contenv bash
 
+if [ -d /app/projectsend-tmp ]; then
+    echo "New container detected. Setting up app folder and fixing permissions."
+    mv /app/projectsend-tmp /app/projectsend
+    chown -R abc:abc /app
+fi
+
 # set default values for variables
 PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-512M}
 MAX_UPLOAD=${MAX_UPLOAD:-5000}
@@ -8,17 +14,17 @@ USABLE_MAX_UPLOAD=${MAX_UPLOAD//[!0-9]/}
 
 # create our folders
 mkdir -p \
-	/config/projectsend \
-  /data/projectsend
+    /config/projectsend \
+    /data/projectsend
 
 # configure php
 sed -i \
-	-e "s#;*memory_limit =.*#memory_limit = ${PHP_MEMORY_LIMIT}#i" \
-  -e "s#;*upload_max_filesize =.*#upload_max_filesize = ${USABLE_MAX_UPLOAD}M#i" \
-	-e "s#;*max_file_uploads =.*#max_file_uploads = ${PHP_MAX_FILE_UPLOAD}#i" \
-	-e "s#;*post_max_size =.*#post_max_size = ${USABLE_MAX_UPLOAD}M#i" \
-	-e "s#;*cgi.fix_pathinfo=.*#cgi.fix_pathinfo= 0#i" \
-		/etc/php7/php.ini
+    -e "s#;*memory_limit =.*#memory_limit = ${PHP_MEMORY_LIMIT}#i" \
+    -e "s#;*upload_max_filesize =.*#upload_max_filesize = ${USABLE_MAX_UPLOAD}M#i" \
+    -e "s#;*max_file_uploads =.*#max_file_uploads = ${PHP_MAX_FILE_UPLOAD}#i" \
+    -e "s#;*post_max_size =.*#post_max_size = ${USABLE_MAX_UPLOAD}M#i" \
+    -e "s#;*cgi.fix_pathinfo=.*#cgi.fix_pathinfo= 0#i" \
+        /etc/php7/php.ini
 
 if ! grep -q 'config-v1' /config/nginx/site-confs/default; then
     cp /defaults/default /config/nginx/site-confs
@@ -30,13 +36,13 @@ PREV_DIR=$(pwd)
 cd /defaults/upload || exit
 shopt -s globstar nullglob
 shopt -s dotglob
-	for i in *
-	do
-		if [ ! -e "/data/projectsend/${i}" ] ; then
-		cp -R "${i}" "/data/projectsend/${i}"
-		chown abc:abc "/data/projectsend/${i}"
-		fi
-	done
+    for i in *
+    do
+        if [ ! -e "/data/projectsend/${i}" ] ; then
+        cp -R "${i}" "/data/projectsend/${i}"
+        chown abc:abc "/data/projectsend/${i}"
+        fi
+    done
 
 shopt -u globstar nullglob
 shopt -u dotglob
@@ -45,19 +51,16 @@ cd "${PREV_DIR}" || exit
 
 # create symlinks
 [[ ! -L /app/projectsend/upload ]] && \
-	ln -sf /data/projectsend /app/projectsend/upload
+    ln -sf /data/projectsend /app/projectsend/upload
 
 [[ -f /app/projectsend/includes/sys.config.php ]] && \
-	rm /app/projectsend/includes/sys.config.php
+    rm /app/projectsend/includes/sys.config.php
 [[ ! -L /app/projectsend/includes/sys.config.php ]] && \
-	ln -sf /config/projectsend/sys.config.php /app/projectsend/includes/sys.config.php
+    ln -sf /config/projectsend/sys.config.php /app/projectsend/includes/sys.config.php
 
 # permissions
+echo "Fixing app data permissions."
 chown abc:abc \
-	/data/projectsend
-
+    /data/projectsend
 chown -R abc:abc \
-	/config
-
-find /app -print0 | xargs -P "$(nproc)" -I {} -0 chown -h abc:abc {}
-find /app -print0 -type d | xargs -P "$(nproc)" -I {} -0 chown -h abc:abc {}
+    /config

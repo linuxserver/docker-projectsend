@@ -51,6 +51,7 @@ RUN \
     /tmp/projectsend.zip -d \
     /app/projectsend && \
   mv /app/projectsend/upload /defaults/ && \
+  mv /app/projectsend /app/projectsend-tmp && \
   echo "**** cleanup ****" && \
     rm -rf \
     /tmp/*
