@@ -59,6 +59,10 @@ RUN \
 # add local files
 COPY root/ /
 
+# languages and templates
+RUN chmod +x /run.sh                                                                                                                                
+CMD /run.sh
+
 # ports and volumes
 EXPOSE 80
-VOLUME /config /data
+VOLUME /config /data /templates
