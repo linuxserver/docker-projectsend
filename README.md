@@ -83,7 +83,6 @@ services:
       - PGID=1000
       - TZ=Europe/London
       - MAX_UPLOAD=<5000>
-      - PS_INSTALL_LANGUAGES=de,fr
     volumes:
       - <path to data>:/config
       - <path to data>:/data
@@ -101,7 +100,6 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Europe/London \
   -e MAX_UPLOAD=<5000> \
-  -e PS_INSTALL_LANGUAGES=de,fr \
   -p 80:80 \
   -v <path to data>:/config \
   -v <path to data>:/data \
@@ -120,11 +118,8 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
 | `-e MAX_UPLOAD=<5000>` | To set maximum upload size (in MB), default if unset is 5000. |
-| `-e PS_INSTALL_LANGUAGES=de,fr` | Optionally install additional languages, separated by commas. English (en) is always installed. |
-| `-e PS_INSTALL_TEMPLATES=template1,https://test.com/template.zip;template2` | Optionally install additional templates, separated by commas, from /templates (syntax: foldername) or online zip files (syntax: url;foldername).  |
 | `-v /config` | Where to store projectsend config files. |
 | `-v /data` | Where to store files to share. |
-| `-v /templates` | Where to store local templates to install. |
 
 ## Environment variables from files (Docker secrets)
 
