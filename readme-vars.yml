@@ -58,6 +58,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "05.11.21:", desc: "Add language and template install option."}
   - { date: "24.06.21:", desc: "Rebasing to alpine 3.14, switch to nginx"}
   - { date: "23.01.21:", desc: "Rebasing to alpine 3.13." }
   - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }
