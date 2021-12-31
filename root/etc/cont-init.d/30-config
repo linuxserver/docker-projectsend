@@ -58,6 +58,29 @@ cd "${PREV_DIR}" || exit
 [[ ! -L /app/projectsend/includes/sys.config.php ]] && \
     ln -sf /config/projectsend/sys.config.php /app/projectsend/includes/sys.config.php
 
+# symlink translations
+mkdir -p /config/translations
+
+shopt -s globstar dotglob
+
+[[ -d /config/translations/lang && ! -L /app/projectsend/lang  ]] && rm -rf /app/projectsend/lang
+[[ ! -d /config/translations/lang && ! -L /app/projectsend/lang  ]] && mv /app/projectsend/lang /config/translations/
+[[ -d /config/translations/lang && ! -L /app/projectsend/lang  ]] && ln -s /config/translations/lang /app/projectsend/lang
+
+symlinks=( \
+/app/projectsend/templates/default/lang \
+/app/projectsend/templates/gallery/lang \
+/app/projectsend/templates/pinboxes/lang \
+)
+
+for i in "${symlinks[@]}"; do
+[[ -d /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)"/"$NF}')" && ! -L "$i"  ]] && rm -rf "$i"
+[[ ! -d /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)"/"$NF}')" && ! -L "$i"  ]] && mv "$i" /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)}')"
+[[ -d /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)"/"$NF}')" && ! -L "$i"  ]] && ln -s /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)"/"$NF}')" "$i"
+done
+
+shopt -u globstar dotglob    
+
 # permissions
 echo "Fixing app data permissions."
 chown abc:abc \
