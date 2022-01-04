@@ -79,7 +79,7 @@ for i in "${symlinks[@]}"; do
 [[ -d /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)"/"$NF}')" && ! -L "$i"  ]] && ln -s /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)"/"$NF}')" "$i"
 done
 
-shopt -u globstar dotglob    
+shopt -u globstar dotglob
 
 # permissions
 echo "Fixing app data permissions."
