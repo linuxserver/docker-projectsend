@@ -58,11 +58,21 @@ cd "${PREV_DIR}" || exit
 [[ ! -L /app/projectsend/includes/sys.config.php ]] && \
     ln -sf /config/projectsend/sys.config.php /app/projectsend/includes/sys.config.php
 
-# symlink translations
+#Handle translations
 mkdir -p /config/translations
 
 shopt -s globstar dotglob
 
+#check if there are newer translation files in the container and if so copy them to /config
+if [[ -d /config/translations/lang && ! -L /app/projectsend/lang ]]; then
+    for file in /app/projectsend/lang/*
+    do
+        if [ $(date -r "$file" +%s) -ge $(date -r "/config/translations/lang/$(echo $file | awk -F '/' '{print $(NF)}')" +%s) ]; then
+            cp "$file" /config/translations/lang/
+        fi
+    done
+fi
+# symlink translations
 [[ -d /config/translations/lang && ! -L /app/projectsend/lang  ]] && rm -rf /app/projectsend/lang
 [[ ! -d /config/translations/lang && ! -L /app/projectsend/lang  ]] && mv /app/projectsend/lang /config/translations/
 [[ -d /config/translations/lang && ! -L /app/projectsend/lang  ]] && ln -s /config/translations/lang /app/projectsend/lang
@@ -74,9 +84,21 @@ symlinks=( \
 )
 
 for i in "${symlinks[@]}"; do
-[[ -d /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)"/"$NF}')" && ! -L "$i"  ]] && rm -rf "$i"
-[[ ! -d /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)"/"$NF}')" && ! -L "$i"  ]] && mv "$i" /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)}')"
-[[ -d /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)"/"$NF}')" && ! -L "$i"  ]] && ln -s /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)"/"$NF}')" "$i"
+path=$(echo "$i" | awk -F '/' '{print $(NF-1)"/"$NF}')
+#check if there are newer translation files in the container and if so copy them to /config
+if [[ -d /config/translations/"$path" && ! -L "$i" ]]; then
+    for file in "$i"/*
+    do
+    if [ $(date -r "$file" +%s) -ge $(date -r "/config/translations/$(echo $i | awk -F '/' '{print $(NF-1)}')/$(echo $file | awk -F '/' '{print $(NF)}')" +%s) ]; then
+        cp "$file" "/config/translations/$(echo $i | awk -F '/' '{print $(NF-1)}')"
+    fi
+done
+fi
+# symlink translations
+[[ -d /config/translations/"$path" && ! -L "$i"  ]] && rm -rf "$i"
+[[ ! -d /config/translations/"$path" && ! -L "$i"  ]] && mv "$i" /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)}')"
+[[ -d /config/translations/"$path" && ! -L "$i"  ]] && ln -s /config/translations/"$path" "$i"
+
 done
 
 shopt -u globstar dotglob
