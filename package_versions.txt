@@ -14,7 +14,7 @@ coreutils-8.32-r2
 curl-7.79.1-r1
 expat-2.4.7-r0
 freetds-1.2.21-r0
-freetype-2.10.4-r1
+freetype-2.10.4-r2
 gdbm-1.19-r0
 git-2.32.1-r0
 gmp-6.2.1-r1
@@ -23,7 +23,7 @@ libattr-2.5.1-r0
 libbsd-0.11.3-r0
 libbz2-1.0.8-r1
 libc-utils-0.7.2-r3
-libcrypto1.1-1.1.1n-r0
+libcrypto1.1-1.1.1o-r0
 libcurl-7.79.1-r1
 libedit-20210216.3.1-r0
 libgcc-10.3.1_git20210424-r2
@@ -41,7 +41,7 @@ libressl3.3-libssl-3.3.6-r0
 libretls-3.3.3p1-r3
 libsasl-2.1.28-r0
 libsm-1.2.3-r0
-libssl1.1-1.1.1n-r0
+libssl1.1-1.1.1o-r0
 libstdc++-10.3.1_git20210424-r2
 libuuid-2.37.4-r0
 libwebp-1.2.0-r2
@@ -50,7 +50,7 @@ libxau-1.0.9-r0
 libxcb-1.14-r2
 libxdmcp-1.1.3-r0
 libxext-1.3.4-r0
-libxml2-2.9.13-r0
+libxml2-2.9.14-r0
 libxpm-3.5.13-r0
 libxt-1.2.1-r0
 libzip-1.7.3-r2
@@ -62,7 +62,7 @@ nano-5.7-r2
 ncurses-libs-6.2_p20210612-r0
 ncurses-terminfo-base-6.2_p20210612-r0
 nghttp2-libs-1.43.0-r0
-nginx-1.20.2-r0
+nginx-1.20.2-r1
 oniguruma-6.9.7.1-r0
 openssl-1.1.1n-r0
 pcre-8.44-r0
@@ -115,4 +115,4 @@ unzip-6.0-r9
 utmps-0.1.0.2-r0
 xz-5.2.5-r1
 xz-libs-5.2.5-r1
-zlib-1.2.12-r0
+zlib-1.2.12-r1
