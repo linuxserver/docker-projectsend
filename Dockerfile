@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.14
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.15
 
 # set version label
 ARG BUILD_DATE
@@ -11,35 +11,37 @@ RUN \
   echo "**** install runtime packages ****" && \
   apk add -U --upgrade --no-cache \
   curl \
-  php7-bcmath \
-  php7-bz2 \
-  php7-cli \
-  php7-ctype \
-  php7-curl \
-  php7-dom \
-  php7-fileinfo \
-  php7-gd \
-  php7-gettext \
-  php7-gmp \
-  php7-json \
-  php7-iconv \
-  php7-mbstring \
-  php7-mcrypt \
-  php7-mysqli \
-  php7-openssl \
-  php7-pdo \
-  php7-pdo_dblib \
-  php7-pdo_mysql \
-  php7-pecl-apcu \
-  php7-pecl-memcached \
-  php7-phar \
-  php7-soap \
-  php7-xmlreader \
-  php7-xmlrpc \
-  php7-zip \
+  php8-bcmath \
+  php8-bz2 \
+  php8-cli \
+  php8-ctype \
+  php8-curl \
+  php8-dom \
+  php8-fileinfo \
+  php8-gd \
+  php8-gettext \
+  php8-gmp \
+  php8-iconv \
+  php8-json \
+  php8-mbstring \
+  php8-mysqli \
+  php8-openssl \
+  php8-pdo \
+  php8-pdo_dblib \
+  php8-pdo_mysql \
+  php8-pecl-apcu \
+  php8-pecl-mcrypt \
+  php8-pecl-memcached \
+  php8-phar \
+  php8-soap \
+  php8-xmlreader \
+  php8-zip \
   unzip && \
+  apk add --no-cache \
+    --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    php8-pecl-xmlrpc && \
   echo "**** install projectsend ****" && \
-  mkdir -p /app/projectsend && \
+  mkdir -p /app/www/public && \
   if [ -z ${PROJECTSEND_VERSION+x} ]; then \
     PROJECTSEND_VERSION=$(curl -sX GET "https://api.github.com/repos/projectsend/projectsend/releases/latest" \
     | awk '/tag_name/{print $4;exit}' FS='[""]'); \
@@ -49,16 +51,16 @@ RUN \
     "https://github.com/projectsend/projectsend/releases/download/${PROJECTSEND_VERSION}/projectsend-${PROJECTSEND_VERSION}.zip" && \
   unzip \
     /tmp/projectsend.zip -d \
-    /app/projectsend && \
-  mv /app/projectsend/upload /defaults/ && \
-  mv /app/projectsend /app/projectsend-tmp && \
+    /app/www/public && \
+  mv /app/www/public/upload /defaults/ && \
+  mv /app/www/public /app/www/public-tmp && \
   echo "**** cleanup ****" && \
     rm -rf \
     /tmp/*
 
-# add local files
+# copy local files
 COPY root/ /
 
-# ports and volumes
-EXPOSE 80
-VOLUME /config /data
+# ports and volumes
+EXPOSE 80 443
+VOLUME /config
