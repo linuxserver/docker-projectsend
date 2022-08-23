@@ -63,8 +63,8 @@ mkdir -p /config/translations
 shopt -s globstar dotglob
 
 #check if there are newer translation files in the container and if so copy them to /config
-if [[ -d /config/translations/lang && ! -L /app/projectsend/lang ]]; then
-    for file in /app/projectsend/lang/*
+if [[ -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
+    for file in /app/www/public/lang/*
     do
         if [ $(date -r "$file" +%s) -ge $(date -r "/config/translations/lang/$(echo $file | awk -F '/' '{print $(NF)}')" +%s) ]; then
             cp "$file" /config/translations/lang/
@@ -72,14 +72,14 @@ if [[ -d /config/translations/lang && ! -L /app/projectsend/lang ]]; then
     done
 fi
 # symlink translations
-[[ -d /config/translations/lang && ! -L /app/projectsend/lang  ]] && rm -rf /app/projectsend/lang
-[[ ! -d /config/translations/lang && ! -L /app/projectsend/lang  ]] && mv /app/projectsend/lang /config/translations/
-[[ -d /config/translations/lang && ! -L /app/projectsend/lang  ]] && ln -s /config/translations/lang /app/projectsend/lang
+[[ -d /config/translations/lang && ! -L /app/www/public/lang  ]] && rm -rf /app/www/public/lang
+[[ ! -d /config/translations/lang && ! -L /app/www/public/lang  ]] && mv /app/www/public/lang /config/translations/
+[[ -d /config/translations/lang && ! -L /app/www/public/lang  ]] && ln -s /config/translations/lang /app/www/public/lang
 
 symlinks=( \
-/app/projectsend/templates/default/lang \
-/app/projectsend/templates/gallery/lang \
-/app/projectsend/templates/pinboxes/lang \
+/app/www/public/templates/default/lang \
+/app/www/public/templates/gallery/lang \
+/app/www/public/templates/pinboxes/lang \
 )
 
 for i in "${symlinks[@]}"; do
