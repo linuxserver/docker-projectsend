@@ -24,7 +24,7 @@ param_usage_include_net: false
 param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
-  - { env_var: "MAX_UPLOAD", env_value: "<5000>", desc: "To set maximum upload size (in MB), default if unset is 5000." }
+  - { env_var: "MAX_UPLOAD", env_value: "5000", desc: "To set maximum upload size (in MB), default if unset is 5000." }
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where to store projectsend config files." }
