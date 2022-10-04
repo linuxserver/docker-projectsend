@@ -85,7 +85,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
-      - MAX_UPLOAD=<5000>
+      - MAX_UPLOAD=5000
     volumes:
       - <path to data>:/config
       - <path to data>:/data
@@ -102,7 +102,7 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
-  -e MAX_UPLOAD=<5000> \
+  -e MAX_UPLOAD=5000 \
   -p 80:80 \
   -v <path to data>:/config \
   -v <path to data>:/data \
@@ -120,7 +120,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
-| `-e MAX_UPLOAD=<5000>` | To set maximum upload size (in MB), default if unset is 5000. |
+| `-e MAX_UPLOAD=5000` | To set maximum upload size (in MB), default if unset is 5000. |
 | `-v /config` | Where to store projectsend config files. |
 | `-v /data` | Where to store files to share. |
 
