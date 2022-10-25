@@ -81,16 +81,40 @@ services:
   projectsend:
     image: lscr.io/linuxserver/projectsend:latest
     container_name: projectsend
+    depends_on:
+      - mariadb
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
       - MAX_UPLOAD=5000
+      - DB_HOST=mariadb
+      - DB_USER=CHANGEME
+      - DB_PASS=CHANGEMEPASSWORD
+      - DB_NAME=projectsend
+      - DB_PORT=3306
     volumes:
       - <path to data>:/config
       - <path to data>:/data
     ports:
-      - 80:80
+      - 8088:80
+    restart: unless-stopped
+  mariadb:
+    image: lscr.io/linuxserver/mariadb:latest
+    container_name: mariadb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=CHANGEME_ROOT_ACCESS_PASSWORD
+      - TZ=Europe/London
+      - MYSQL_DATABASE=projectsend #optional
+      - MYSQL_USER=CHANGEME #optional
+      - MYSQL_PASSWORD=CHANGEME #optional
+      #- REMOTE_SQL=http://URL1/your.sql,https://URL2/your.sql #optional
+    volumes:
+      - <path to data>:/config
+    ports:
+      - 3306:3306
     restart: unless-stopped
 ```
 
