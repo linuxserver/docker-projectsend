@@ -25,6 +25,11 @@ param_usage_include_env: true
 param_env_vars:
   - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
   - { env_var: "MAX_UPLOAD", env_value: "5000", desc: "To set maximum upload size (in MB), default if unset is 5000." }
+  - { env_var: "DB_HOST", env_value: "<yourdbhost>", desc: "for specifying the database host" }
+  - { env_var: "DB_USER", env_value: "<yourdbuser>", desc: "for specifying the database user" }
+  - { env_var: "DB_PASS", env_value: "<yourdbpass>", desc: "for specifying the database password" }
+  - { env_var: "DB_DATABASE", env_value: "projectsend", desc: "for specifying the database to be used (non-alphanumeric passwords must be properly escaped.)" }
+
 param_usage_include_vols: true
 param_volumes:
   - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where to store projectsend config files." }
@@ -42,6 +47,43 @@ opt_param_usage_include_ports: false
 opt_param_device_map: false
 opt_cap_add_param: false
 optional_block_1: false
+
+custom_compose: |
+  ---
+  version: "2"
+  services:
+    projectsend:
+      image: lscr.io/linuxserver/projectsend
+      container_name: projectsend
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - APP_URL=
+        - DB_HOST=projectsend
+        - DB_USER=CHANGEME
+        - DB_PASS=<yourdbpass>
+        - DB_DATABASE=projectsend
+      volumes:
+        - /path/to/data:/config
+      ports:
+        - 6875:80
+      restart: unless-stopped
+      depends_on:
+        - projectsend_db
+    projectsend_db:
+      image: lscr.io/linuxserver/mariadb
+      container_name: projectsend_db
+      environment:
+        - PUID=1000
+        - PGID=1000
+        - MYSQL_ROOT_PASSWORD=<yourdbpass>
+        - TZ=Europe/London
+        - MYSQL_DATABASE=projectsend
+        - MYSQL_USER=CHANGEME
+        - MYSQL_PASSWORD=<yourdbpass>
+      volumes:
+        - /path/to/data:/config
+      restart: unless-stopped
 
 # application setup block
 app_setup_block_enabled: true
