@@ -31,7 +31,6 @@ RUN \
   php81-pdo_dblib \
   php81-pdo_mysql \
   php81-pecl-apcu \
-  php81-pecl-mcrypt \
   php81-pecl-memcached \
   php81-phar \
   php81-soap \
