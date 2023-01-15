@@ -92,9 +92,15 @@ for i in "${symlinks[@]}"; do
         done
     fi
     # symlink translations
-    [[ -d /config/translations/"$path" && ! -L "$i" ]] && rm -rf "$i"
-    [[ ! -d /config/translations/"$path" && ! -L "$i" ]] && mv "$i" /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)}')"
-    [[ -d /config/translations/"$path" && ! -L "$i" ]] && ln -s /config/translations/"$path" "$i"
+    if [[ -d /config/translations/"$path" && ! -L "$i" ]]; then
+        rm -rf "$i"
+    fi
+    if [[ ! -d /config/translations/"$path" && ! -L "$i" ]]; then
+        mv "$i" /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)}')"
+    fi
+    if [[ -d /config/translations/"$path" && ! -L "$i" ]]; then
+        ln -s /config/translations/"$path" "$i"
+    fi
 
 done
 
