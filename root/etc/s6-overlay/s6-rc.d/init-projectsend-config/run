@@ -4,7 +4,7 @@
 if [ -d /app/www/public-tmp ]; then
     echo "New container detected. Setting up app folder and fixing permissions."
     mv /app/www/public-tmp /app/www/public
-    chown -R abc:abc /app
+    lsiown -R abc:abc /app
 fi
 
 # set default values for variables
@@ -36,7 +36,7 @@ shopt -s dotglob
 for i in *; do
     if [ ! -e "/data/projectsend/${i}" ]; then
         cp -R "${i}" "/data/projectsend/${i}"
-        chown abc:abc "/data/projectsend/${i}"
+        lsiown abc:abc "/data/projectsend/${i}"
     fi
 done
 
@@ -108,7 +108,7 @@ shopt -u globstar dotglob
 
 # permissions
 echo "Fixing app data permissions."
-chown abc:abc \
+lsiown abc:abc \
     /data/projectsend
-chown -R abc:abc \
+lsiown -R abc:abc \
     /config
