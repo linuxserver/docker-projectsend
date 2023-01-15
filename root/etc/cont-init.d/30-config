@@ -1,4 +1,5 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 if [ -d /app/www/public-tmp ]; then
     echo "New container detected. Setting up app folder and fixing permissions."
@@ -24,7 +25,7 @@ sed -i \
     -e "s#;*max_file_uploads =.*#max_file_uploads = ${PHP_MAX_FILE_UPLOAD}#i" \
     -e "s#;*post_max_size =.*#post_max_size = ${USABLE_MAX_UPLOAD}M#i" \
     -e "s#;*cgi.fix_pathinfo=.*#cgi.fix_pathinfo= 0#i" \
-        /etc/php8/php.ini
+    /etc/php8/php.ini
 
 # copy config
 PREV_DIR=$(pwd)
@@ -32,13 +33,12 @@ PREV_DIR=$(pwd)
 cd /defaults/upload || exit 1
 shopt -s globstar nullglob
 shopt -s dotglob
-    for i in *
-    do
-        if [ ! -e "/data/projectsend/${i}" ] ; then
+for i in *; do
+    if [ ! -e "/data/projectsend/${i}" ]; then
         cp -R "${i}" "/data/projectsend/${i}"
         chown abc:abc "/data/projectsend/${i}"
-        fi
-    done
+    fi
+done
 
 shopt -u globstar nullglob
 shopt -u dotglob
@@ -64,39 +64,37 @@ shopt -s globstar dotglob
 
 #check if there are newer translation files in the container and if so copy them to /config
 if [[ -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
-    for file in /app/www/public/lang/*
-    do
+    for file in /app/www/public/lang/*; do
         if [ $(date -r "$file" +%s) -ge $(date -r "/config/translations/lang/$(echo $file | awk -F '/' '{print $(NF)}')" +%s) ]; then
             cp "$file" /config/translations/lang/
         fi
     done
 fi
 # symlink translations
-[[ -d /config/translations/lang && ! -L /app/www/public/lang  ]] && rm -rf /app/www/public/lang
-[[ ! -d /config/translations/lang && ! -L /app/www/public/lang  ]] && mv /app/www/public/lang /config/translations/
-[[ -d /config/translations/lang && ! -L /app/www/public/lang  ]] && ln -s /config/translations/lang /app/www/public/lang
+[[ -d /config/translations/lang && ! -L /app/www/public/lang ]] && rm -rf /app/www/public/lang
+[[ ! -d /config/translations/lang && ! -L /app/www/public/lang ]] && mv /app/www/public/lang /config/translations/
+[[ -d /config/translations/lang && ! -L /app/www/public/lang ]] && ln -s /config/translations/lang /app/www/public/lang
 
-symlinks=( \
-/app/www/public/templates/default/lang \
-/app/www/public/templates/gallery/lang \
-/app/www/public/templates/pinboxes/lang \
+symlinks=(
+    /app/www/public/templates/default/lang
+    /app/www/public/templates/gallery/lang
+    /app/www/public/templates/pinboxes/lang
 )
 
 for i in "${symlinks[@]}"; do
-path=$(echo "$i" | awk -F '/' '{print $(NF-1)"/"$NF}')
-#check if there are newer translation files in the container and if so copy them to /config
-if [[ -d /config/translations/"$path" && ! -L "$i" ]]; then
-    for file in "$i"/*
-    do
-    if [ $(date -r "$file" +%s) -ge $(date -r "/config/translations/$(echo $i | awk -F '/' '{print $(NF-1)}')/$(echo $file | awk -F '/' '{print $(NF)}')" +%s) ]; then
-        cp "$file" "/config/translations/$(echo $i | awk -F '/' '{print $(NF-1)}')"
+    path=$(echo "$i" | awk -F '/' '{print $(NF-1)"/"$NF}')
+    #check if there are newer translation files in the container and if so copy them to /config
+    if [[ -d /config/translations/"$path" && ! -L "$i" ]]; then
+        for file in "$i"/*; do
+            if [ $(date -r "$file" +%s) -ge $(date -r "/config/translations/$(echo $i | awk -F '/' '{print $(NF-1)}')/$(echo $file | awk -F '/' '{print $(NF)}')" +%s) ]; then
+                cp "$file" "/config/translations/$(echo $i | awk -F '/' '{print $(NF-1)}')"
+            fi
+        done
     fi
-done
-fi
-# symlink translations
-[[ -d /config/translations/"$path" && ! -L "$i"  ]] && rm -rf "$i"
-[[ ! -d /config/translations/"$path" && ! -L "$i"  ]] && mv "$i" /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)}')"
-[[ -d /config/translations/"$path" && ! -L "$i"  ]] && ln -s /config/translations/"$path" "$i"
+    # symlink translations
+    [[ -d /config/translations/"$path" && ! -L "$i" ]] && rm -rf "$i"
+    [[ ! -d /config/translations/"$path" && ! -L "$i" ]] && mv "$i" /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)}')"
+    [[ -d /config/translations/"$path" && ! -L "$i" ]] && ln -s /config/translations/"$path" "$i"
 
 done
 
