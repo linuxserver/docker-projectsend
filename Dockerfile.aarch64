@@ -1,4 +1,6 @@
-FROM ghcr.io/linuxserver/baseimage-alpine-nginx:arm64v8-3.15
+# syntax=docker/dockerfile:1
+
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:arm64v8-3.17
 
 # set version label
 ARG BUILD_DATE
@@ -10,45 +12,45 @@ LABEL maintainer="TheSpad"
 RUN \
   echo "**** install runtime packages ****" && \
   apk add -U --upgrade --no-cache \
-  curl \
-  php8-bcmath \
-  php8-bz2 \
-  php8-cli \
-  php8-ctype \
-  php8-curl \
-  php8-dom \
-  php8-fileinfo \
-  php8-gd \
-  php8-gettext \
-  php8-gmp \
-  php8-iconv \
-  php8-json \
-  php8-mbstring \
-  php8-mysqli \
-  php8-openssl \
-  php8-pdo \
-  php8-pdo_dblib \
-  php8-pdo_mysql \
-  php8-pecl-apcu \
-  php8-pecl-mcrypt \
-  php8-pecl-memcached \
-  php8-phar \
-  php8-soap \
-  php8-xmlreader \
-  php8-zip \
-  unzip && \
+  php81-bcmath \
+  php81-bz2 \
+  php81-cli \
+  php81-ctype \
+  php81-curl \
+  php81-dom \
+  php81-fileinfo \
+  php81-gd \
+  php81-gettext \
+  php81-gmp \
+  php81-iconv \
+  php81-json \
+  php81-mbstring \
+  php81-mysqli \
+  php81-openssl \
+  php81-pdo \
+  php81-pdo_dblib \
+  php81-pdo_mysql \
+  php81-pecl-apcu \
+  php81-pecl-memcached \
+  php81-phar \
+  php81-soap \
+  php81-xmlreader \
+  php81-zip && \
   apk add --no-cache \
     --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \
-    php8-pecl-xmlrpc && \
+    php81-pecl-mcrypt \
+    php81-pecl-xmlrpc && \
   echo "**** install projectsend ****" && \
   mkdir -p /app/www/public && \
   if [ -z ${PROJECTSEND_VERSION+x} ]; then \
-    PROJECTSEND_VERSION=$(curl -sX GET "https://api.github.com/repos/projectsend/projectsend/releases/latest" \
-    | awk '/tag_name/{print $4;exit}' FS='[""]'); \
+    PROJECTSEND_VERSION=$(curl -s https://api.github.com/repos/projectsend/projectsend/releases/latest | jq -r '. | .tag_name'); \
   fi && \
-  curl -s -o \
+  curl -fso \
     /tmp/projectsend.zip -L \
-    "https://github.com/projectsend/projectsend/releases/download/${PROJECTSEND_VERSION}/projectsend-${PROJECTSEND_VERSION}.zip" && \
+    "https://github.com/projectsend/projectsend/releases/download/${PROJECTSEND_VERSION}/projectsend-${PROJECTSEND_VERSION}.zip" || \
+    curl -fso \
+      /tmp/projectsend.zip -L \
+      "https://github.com/projectsend/projectsend/releases/download/${PROJECTSEND_VERSION}/projectsend.zip" && \
   unzip \
     /tmp/projectsend.zip -d \
     /app/www/public && \
