@@ -56,7 +56,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "15.01.23:", desc: "Rebasing to alpine 3.17." }
+  - { date: "08.03.23:", desc: "Rebasing to alpine 3.17 and upgrading to s6v3." }
   - { date: "23.08.22:", desc: "Add translation support"}
   - { date: "20.08.22:", desc: "Rebasing to alpine 3.15 with php8. Restructure nginx configs ([see changes announcement](https://info.linuxserver.io/issues/2022-08-20-nginx-base))." }
   - { date: "24.06.21:", desc: "Rebasing to alpine 3.14, switch to nginx"}

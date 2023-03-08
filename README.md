@@ -56,7 +56,7 @@ The architectures supported by this image are:
 | :----: | :----: | ---- |
 | x86-64 | ✅ | amd64-\<version tag\> |
 | arm64 | ✅ | arm64v8-\<version tag\> |
-| armhf| ✅ | arm32v7-\<version tag\> |
+| armhf | ✅ | arm32v7-\<version tag\> |
 
 ## Application Setup
 
@@ -84,7 +84,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Etc/UTC
       - MAX_UPLOAD=5000
     volumes:
       - <path to data>:/config
@@ -101,13 +101,14 @@ docker run -d \
   --name=projectsend \
   -e PUID=1000 \
   -e PGID=1000 \
-  -e TZ=Europe/London \
+  -e TZ=Etc/UTC \
   -e MAX_UPLOAD=5000 \
   -p 80:80 \
   -v <path to data>:/config \
   -v <path to data>:/data \
   --restart unless-stopped \
   lscr.io/linuxserver/projectsend:latest
+
 ```
 
 ## Parameters
@@ -119,7 +120,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-p 80` | WebUI |
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
+| `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e MAX_UPLOAD=5000` | To set maximum upload size (in MB), default if unset is 5000. |
 | `-v /config` | Where to store projectsend config files. |
 | `-v /data` | Where to store files to share. |
@@ -233,6 +234,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **08.03.23:** - Rebasing to alpine 3.17 and upgrading to s6v3.
 * **23.08.22:** - Add translation support
 * **20.08.22:** - Rebasing to alpine 3.15 with php8. Restructure nginx configs ([see changes announcement](https://info.linuxserver.io/issues/2022-08-20-nginx-base)).
 * **24.06.21:** - Rebasing to alpine 3.14, switch to nginx

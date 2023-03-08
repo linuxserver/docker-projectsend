@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
-if [ -d /app/www/public-tmp ]; then
+if [[ -d /app/www/public-tmp ]]; then
     echo "New container detected. Setting up app folder and fixing permissions."
     mv /app/www/public-tmp /app/www/public
     lsiown -R abc:abc /app
@@ -71,9 +71,15 @@ if [[ -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
     done
 fi
 # symlink translations
-[[ -d /config/translations/lang && ! -L /app/www/public/lang ]] && rm -rf /app/www/public/lang
-[[ ! -d /config/translations/lang && ! -L /app/www/public/lang ]] && mv /app/www/public/lang /config/translations/
-[[ -d /config/translations/lang && ! -L /app/www/public/lang ]] && ln -s /config/translations/lang /app/www/public/lang
+if [[ -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
+    rm -rf /app/www/public/lang
+fi
+if [[ ! -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
+    mv /app/www/public/lang /config/translations/
+fi
+if [[ -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
+    ln -s /config/translations/lang /app/www/public/lang
+fi
 
 symlinks=(
     /app/www/public/templates/default/lang

@@ -38,15 +38,19 @@ RUN \
   php81-zip && \
   apk add --no-cache \
     --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+    php81-pecl-mcrypt \
     php81-pecl-xmlrpc && \
   echo "**** install projectsend ****" && \
   mkdir -p /app/www/public && \
   if [ -z ${PROJECTSEND_VERSION+x} ]; then \
     PROJECTSEND_VERSION=$(curl -s https://api.github.com/repos/projectsend/projectsend/releases/latest | jq -r '. | .tag_name'); \
   fi && \
-  curl -s -o \
+  curl -fso \
     /tmp/projectsend.zip -L \
-    "https://github.com/projectsend/projectsend/releases/download/${PROJECTSEND_VERSION}/projectsend-${PROJECTSEND_VERSION}.zip" && \
+    "https://github.com/projectsend/projectsend/releases/download/${PROJECTSEND_VERSION}/projectsend-${PROJECTSEND_VERSION}.zip" || \
+    curl -fso \
+      /tmp/projectsend.zip -L \
+      "https://github.com/projectsend/projectsend/releases/download/${PROJECTSEND_VERSION}/projectsend.zip" && \
   unzip \
     /tmp/projectsend.zip -d \
     /app/www/public && \
