@@ -49,7 +49,7 @@ ansi-wrap                                                0.1.0                  
 anymatch                                                 2.0.0                  npm           
 anymatch                                                 3.1.2                  npm           
 aom-libs                                                 3.5.0-r0               apk           
-apache2-utils                                            2.4.55-r0              apk           
+apache2-utils                                            2.4.56-r0              apk           
 apk-tools                                                2.12.10-r1             apk           
 append-buffer                                            1.0.2                  npm           
 apr                                                      1.7.2-r0               apk           
@@ -245,7 +245,7 @@ gensync                                                  1.0.0-beta.2           
 get-caller-file                                          1.0.3                  npm           
 get-intrinsic                                            1.1.2                  npm           
 get-value                                                2.0.6                  npm           
-git                                                      2.38.4-r0              apk           
+git                                                      2.38.4-r1              apk           
 glob                                                     7.2.3                  npm           
 glob-parent                                              3.1.0                  npm           
 glob-parent                                              5.1.2                  npm           
