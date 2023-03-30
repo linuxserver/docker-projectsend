@@ -182,7 +182,7 @@ core-js                                                  2.6.12                 
 core-util-is                                             1.0.3                  npm           
 coreutils                                                9.1-r0                 apk           
 css                                                      3.0.0                  npm           
-curl                                                     7.88.1-r0              apk           
+curl                                                     7.88.1-r1              apk           
 d                                                        1.0.1                  npm           
 debug                                                    2.6.9                  npm           
 debug                                                    3.2.7                  npm           
@@ -355,7 +355,7 @@ libavif                                                  0.11.1-r0              
 libbsd                                                   0.11.7-r0              apk           
 libbz2                                                   1.0.8-r4               apk           
 libc-utils                                               0.7.2-r3               apk           
-libcrypto3                                               3.0.8-r1               apk           
+libcrypto3                                               3.0.8-r3               apk           
 libcurl                                                  7.88.1-r1              apk           
 libdav1d                                                 1.0.0-r2               apk           
 libedit                                                  20221030.3.1-r0        apk           
@@ -371,7 +371,7 @@ libpng                                                   1.6.38-r0              
 libproc                                                  3.3.17-r2              apk           
 libsasl                                                  2.1.28-r3              apk           
 libsm                                                    1.2.3-r1               apk           
-libssl3                                                  3.0.8-r1               apk           
+libssl3                                                  3.0.8-r3               apk           
 libstdc++                                                12.2.1_git20220924-r4  apk           
 libuuid                                                  2.38.1-r1              apk           
 libwebp                                                  1.2.4-r1               apk           
@@ -443,7 +443,7 @@ object.pick                                              1.3.0                  
 object.reduce                                            1.0.1                  npm           
 once                                                     1.4.0                  npm           
 oniguruma                                                6.9.8-r0               apk           
-openssl                                                  3.0.8-r0               apk           
+openssl                                                  3.0.8-r1               apk           
 opis/closure                                             3.6.3                  php-composer  
 ordered-read-streams                                     1.0.1                  npm           
 os-locale                                                1.4.0                  npm           
@@ -466,7 +466,7 @@ php-cli                                                  8.1.17                 
 php-di/invoker                                           2.3.3                  php-composer  
 php-di/php-di                                            6.4.0                  php-composer  
 php-di/phpdoc-reader                                     2.2.1                  php-composer  
-php-fpm                                                  8.1.16                 binary        
+php-fpm                                                  8.1.17                 binary        
 php81                                                    8.1.17-r0              apk           
 php81-bcmath                                             8.1.17-r0              apk           
 php81-bz2                                                8.1.17-r0              apk           
@@ -475,7 +475,7 @@ php81-ctype                                              8.1.17-r0              
 php81-curl                                               8.1.17-r0              apk           
 php81-dom                                                8.1.17-r0              apk           
 php81-fileinfo                                           8.1.17-r0              apk           
-php81-fpm                                                8.1.16-r0              apk           
+php81-fpm                                                8.1.17-r0              apk           
 php81-gd                                                 8.1.17-r0              apk           
 php81-gettext                                            8.1.17-r0              apk           
 php81-gmp                                                8.1.17-r0              apk           
@@ -494,11 +494,11 @@ php81-pecl-memcached                                     3.2.0-r0               
 php81-pecl-xmlrpc                                        1.0.0_rc3-r0           apk           
 php81-phar                                               8.1.17-r0              apk           
 php81-session                                            8.1.17-r0              apk           
-php81-simplexml                                          8.1.16-r0              apk           
+php81-simplexml                                          8.1.17-r0              apk           
 php81-soap                                               8.1.17-r0              apk           
-php81-xml                                                8.1.16-r0              apk           
+php81-xml                                                8.1.17-r0              apk           
 php81-xmlreader                                          8.1.17-r0              apk           
-php81-xmlwriter                                          8.1.16-r0              apk           
+php81-xmlwriter                                          8.1.17-r0              apk           
 php81-zip                                                8.1.17-r0              apk           
 phpmailer/phpmailer                                      v6.6.0                 php-composer  
 picocolors                                               0.2.1                  npm           
