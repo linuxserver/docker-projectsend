@@ -38,7 +38,7 @@ acorn                                                    6.4.2                  
 alpine-baselayout                                        3.4.0-r0               apk           
 alpine-baselayout-data                                   3.4.0-r0               apk           
 alpine-keys                                              2.4-r1                 apk           
-alpine-release                                           3.17.2-r0              apk           
+alpine-release                                           3.17.3-r0              apk           
 ansi-colors                                              1.1.0                  npm           
 ansi-gray                                                0.1.1                  npm           
 ansi-regex                                               2.1.1                  npm           
@@ -627,7 +627,7 @@ toastr                                                   2.1.4                  
 type                                                     1.2.0                  npm           
 type                                                     2.7.2                  npm           
 typedarray                                               0.0.6                  npm           
-tzdata                                                   2023b-r1               apk           
+tzdata                                                   2023c-r0               apk           
 uglify-js                                                3.17.0                 npm           
 unc-path-regex                                           0.1.2                  npm           
 undertaker                                               1.3.0                  npm           
