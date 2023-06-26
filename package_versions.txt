@@ -38,7 +38,7 @@ acorn                                                    6.4.2                  
 alpine-baselayout                                        3.4.3-r1                apk           
 alpine-baselayout-data                                   3.4.3-r1                apk           
 alpine-keys                                              2.4-r1                  apk           
-alpine-release                                           3.18.0-r0               apk           
+alpine-release                                           3.18.2-r0               apk           
 ansi-colors                                              1.1.0                   npm           
 ansi-gray                                                0.1.1                   npm           
 ansi-regex                                               2.1.1                   npm           
@@ -576,7 +576,7 @@ semver                                                   6.3.0                  
 semver-greatest-satisfied-range                          1.1.0                   npm           
 set-blocking                                             2.0.0                   npm           
 set-value                                                2.0.1                   npm           
-shadow                                                   4.13-r2                 apk           
+shadow                                                   4.13-r4                 apk           
 sjcl                                                     1.0.8                   npm           
 skalibs                                                  2.13.1.1-r1             apk           
 snapdragon                                               0.8.2                   npm           
