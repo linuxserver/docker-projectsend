@@ -182,7 +182,7 @@ core-js                                                  2.6.12                 
 core-util-is                                             1.0.3                   npm           
 coreutils                                                9.3-r1                  apk           
 css                                                      3.0.0                   npm           
-curl                                                     8.1.2-r0                apk           
+curl                                                     8.2.0-r1                apk           
 d                                                        1.0.1                   npm           
 debug                                                    2.6.9                   npm           
 debug                                                    3.2.7                   npm           
@@ -356,7 +356,7 @@ libbsd                                                   0.11.7-r1              
 libbz2                                                   1.0.8-r5                apk           
 libc-utils                                               0.7.2-r5                apk           
 libcrypto3                                               3.1.1-r3                apk           
-libcurl                                                  8.1.2-r0                apk           
+libcurl                                                  8.2.0-r1                apk           
 libdav1d                                                 1.2.1-r0                apk           
 libedit                                                  20221030.3.1-r1         apk           
 libevent                                                 2.1.12-r6               apk           
@@ -424,7 +424,7 @@ nanomatch                                                1.2.13                 
 ncurses-terminfo-base                                    6.4_p20230506-r0        apk           
 netcat-openbsd                                           1.219-r1                apk           
 next-tick                                                1.1.0                   npm           
-nghttp2-libs                                             1.53.0-r0               apk           
+nghttp2-libs                                             1.55.1-r0               apk           
 nginx                                                    1.24.0-r6               apk           
 nikic/fast-route                                         v1.3.0                  php-composer  
 node-jen                                                 1.1.0                   npm           
