@@ -424,7 +424,6 @@ ncurses-terminfo-base                                    6.4_p20230506-r0       
 netcat-openbsd                                           1.219-r1                apk           
 next-tick                                                1.1.0                   npm           
 nghttp2-libs                                             1.55.1-r0               apk           
-nginx                                                    1.24.0                  binary        
 nginx                                                    1.24.0-r6               apk           
 nikic/fast-route                                         v1.3.0                  php-composer  
 node-jen                                                 1.1.0                   npm           
@@ -468,7 +467,6 @@ pcre2                                                    10.42-r1               
 php-di/invoker                                           2.3.3                   php-composer  
 php-di/php-di                                            6.4.0                   php-composer  
 php-di/phpdoc-reader                                     2.2.1                   php-composer  
-php-fpm                                                  8.2.8                   binary        
 php82                                                    8.2.8-r0                apk           
 php82-bcmath                                             8.2.8-r0                apk           
 php82-bz2                                                8.2.8-r0                apk           
