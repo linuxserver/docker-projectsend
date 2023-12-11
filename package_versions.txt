@@ -38,7 +38,7 @@ acorn                                                    6.4.2                  
 alpine-baselayout                                        3.4.3-r1                apk           
 alpine-baselayout-data                                   3.4.3-r1                apk           
 alpine-keys                                              2.4-r1                  apk           
-alpine-release                                           3.18.4-r0               apk           
+alpine-release                                           3.18.5-r0               apk           
 ansi-colors                                              1.1.0                   npm           
 ansi-gray                                                0.1.1                   npm           
 ansi-regex                                               2.1.1                   npm           
@@ -181,7 +181,7 @@ core-js                                                  2.6.12                 
 core-util-is                                             1.0.3                   npm           
 coreutils                                                9.3-r1                  apk           
 css                                                      3.0.0                   npm           
-curl                                                     8.4.0-r0                apk           
+curl                                                     8.5.0-r0                apk           
 d                                                        1.0.1                   npm           
 debug                                                    2.6.9                   npm           
 debug                                                    3.2.7                   npm           
@@ -323,7 +323,7 @@ isarray                                                  1.0.0                  
 isexe                                                    2.0.0                   npm           
 isobject                                                 2.1.0                   npm           
 isobject                                                 3.0.1                   npm           
-jq                                                       1.6-r3                  apk           
+jq                                                       1.6-r4                  apk           
 jquery                                                   3.6.1                   npm           
 jquery-migrate                                           3.0.1                   npm           
 jquery-validation                                        1.19.5                  npm           
@@ -355,7 +355,7 @@ libbsd                                                   0.11.7-r1              
 libbz2                                                   1.0.8-r5                apk           
 libc-utils                                               0.7.2-r5                apk           
 libcrypto3                                               3.1.4-r1                apk           
-libcurl                                                  8.4.0-r0                apk           
+libcurl                                                  8.5.0-r0                apk           
 libdav1d                                                 1.2.1-r0                apk           
 libedit                                                  20221030.3.1-r1         apk           
 libevent                                                 2.1.12-r6               apk           
