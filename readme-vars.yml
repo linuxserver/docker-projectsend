@@ -26,8 +26,8 @@ param_env_vars:
   - { env_var: "MAX_UPLOAD", env_value: "5000", desc: "To set maximum upload size (in MB), default if unset is 5000." }
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where to store projectsend config files." }
-  - { vol_path: "/data", vol_host_path: "<path to data>", desc: "Where to store files to share." }
+  - { vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Persistent config files" }
+  - { vol_path: "/data", vol_host_path: "/path/to/data", desc: "Where to store files to share." }
 param_usage_include_ports: true
 param_ports:
   - { external_port: "80", internal_port: "80", port_desc: "WebUI" }
@@ -55,6 +55,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "23.12.23:", desc: "Rebase to Alpine 3.19 with php 8.3."}
   - { date: "25.05.23:", desc: "Rebase to Alpine 3.18, deprecate armhf." }
   - { date: "08.03.23:", desc: "Rebasing to alpine 3.17 and upgrading to s6v3." }
   - { date: "23.08.22:", desc: "Add translation support"}
