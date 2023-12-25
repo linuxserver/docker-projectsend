@@ -171,6 +171,7 @@ color-name                                               1.1.3                  
 color-name                                               1.1.4                   npm           
 color-support                                            1.1.3                   npm           
 component-emitter                                        1.3.0                   npm           
+composer                                                 2.6.6                   binary        
 concat-map                                               0.0.1                   npm           
 concat-stream                                            1.6.2                   npm           
 concat-with-sourcemaps                                   1.1.0                   npm           
@@ -489,7 +490,7 @@ php82-pdo_dblib                                          8.2.13-r0              
 php82-pdo_mysql                                          8.2.13-r0               apk           
 php82-pecl-apcu                                          5.1.22-r0               apk           
 php82-pecl-igbinary                                      3.2.14-r0               apk           
-php82-pecl-mcrypt                                        1.0.6-r0                apk           
+php82-pecl-mcrypt                                        1.0.7-r0                apk           
 php82-pecl-memcached                                     3.2.0-r1                apk           
 php82-pecl-msgpack                                       2.2.0-r0                apk           
 php82-phar                                               8.2.13-r0               apk           
