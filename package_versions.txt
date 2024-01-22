@@ -355,7 +355,7 @@ libavif                                                  0.11.1-r2              
 libbsd                                                   0.11.7-r1               apk           
 libbz2                                                   1.0.8-r5                apk           
 libc-utils                                               0.7.2-r5                apk           
-libcrypto3                                               3.1.4-r3                apk           
+libcrypto3                                               3.1.4-r4                apk           
 libcurl                                                  8.5.0-r0                apk           
 libdav1d                                                 1.2.1-r0                apk           
 libedit                                                  20221030.3.1-r1         apk           
@@ -374,7 +374,7 @@ libpng                                                   1.6.39-r3              
 libproc2                                                 4.0.4-r0                apk           
 libsasl                                                  2.1.28-r4               apk           
 libsm                                                    1.2.4-r1                apk           
-libssl3                                                  3.1.4-r3                apk           
+libssl3                                                  3.1.4-r4                apk           
 libstdc++                                                12.2.1_git20220924-r10  apk           
 libunistring                                             1.1-r1                  apk           
 libuuid                                                  2.38.1-r8               apk           
@@ -446,7 +446,7 @@ object.pick                                              1.3.0                  
 object.reduce                                            1.0.1                   npm           
 once                                                     1.4.0                   npm           
 oniguruma                                                6.9.8-r1                apk           
-openssl                                                  3.1.4-r3                apk           
+openssl                                                  3.1.4-r4                apk           
 opis/closure                                             3.6.3                   php-composer  
 ordered-read-streams                                     1.0.1                   npm           
 os-locale                                                1.4.0                   npm           
