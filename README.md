@@ -85,8 +85,8 @@ services:
       - TZ=Etc/UTC
       - MAX_UPLOAD=5000
     volumes:
-      - <path to data>:/config
-      - <path to data>:/data
+      - /path/to/projectsend/config:/config
+      - /path/to/data:/data
     ports:
       - 80:80
     restart: unless-stopped
@@ -102,8 +102,8 @@ docker run -d \
   -e TZ=Etc/UTC \
   -e MAX_UPLOAD=5000 \
   -p 80:80 \
-  -v <path to data>:/config \
-  -v <path to data>:/data \
+  -v /path/to/projectsend/config:/config \
+  -v /path/to/data:/data \
   --restart unless-stopped \
   lscr.io/linuxserver/projectsend:latest
 ```
@@ -119,7 +119,7 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e MAX_UPLOAD=5000` | To set maximum upload size (in MB), default if unset is 5000. |
-| `-v /config` | Where to store projectsend config files. |
+| `-v /config` | Persistent config files |
 | `-v /data` | Where to store files to share. |
 
 ## Environment variables from files (Docker secrets)
@@ -283,6 +283,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **23.12.23:** - Rebase to Alpine 3.19 with php 8.3.
 * **25.05.23:** - Rebase to Alpine 3.18, deprecate armhf.
 * **08.03.23:** - Rebasing to alpine 3.17 and upgrading to s6v3.
 * **23.08.22:** - Add translation support
