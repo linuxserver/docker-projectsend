@@ -27,7 +27,7 @@ RUN \
     php83-pecl-memcached \
     php83-soap \
     php83-xmlreader && \
-  apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+  apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
     php83-pecl-mcrypt && \
   echo "**** install projectsend ****" && \
   mkdir -p /app/www/public && \
