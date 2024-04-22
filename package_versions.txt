@@ -50,7 +50,7 @@ anymatch                                                 2.0.0                  
 anymatch                                                 3.1.2                  npm                             
 aom-libs                                                 3.7.1-r0               apk                             
 apache2-utils                                            2.4.59-r0              apk                             
-apk-tools                                                2.14.3-r1              apk                             
+apk-tools                                                2.14.4-r0              apk                             
 append-buffer                                            1.0.2                  npm                             
 apr                                                      1.7.4-r0               apk                             
 apr-util                                                 1.6.3-r1               apk                             
@@ -230,6 +230,7 @@ fill-range                                               7.0.1                  
 find-up                                                  1.1.2                  npm                             
 findup-sync                                              2.0.0                  npm                             
 findup-sync                                              3.0.0                  npm                             
+findutils                                                4.9.0-r5               apk                             
 fined                                                    1.2.0                  npm                             
 flagged-respawn                                          1.0.1                  npm                             
 flush-write-stream                                       1.1.1                  npm                             
