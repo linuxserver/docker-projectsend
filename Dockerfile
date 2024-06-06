@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.19
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.20
 
 # set version label
 ARG BUILD_DATE
@@ -24,11 +24,10 @@ RUN \
     php83-pdo_dblib \
     php83-pdo_mysql \
     php83-pecl-apcu \
+    php83-pecl-mcrypt \
     php83-pecl-memcached \
     php83-soap \
     php83-xmlreader && \
-  apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
-    php83-pecl-mcrypt && \
   echo "**** install projectsend ****" && \
   mkdir -p /app/www/public && \
   if [ -z ${PROJECTSEND_VERSION+x} ]; then \
@@ -45,6 +44,7 @@ RUN \
     /app/www/public && \
   mv /app/www/public/upload /defaults/ && \
   mv /app/www/public /app/www/public-tmp && \
+  printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
   echo "**** cleanup ****" && \
     rm -rf \
     /tmp/*
