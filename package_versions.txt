@@ -106,7 +106,7 @@ ansi-styles                                              3.2.1                  
 ansi-wrap                                                0.1.0                  npm                             
 anymatch                                                 2.0.0                  npm                             
 anymatch                                                 3.1.2                  npm                             
-aom-libs                                                 3.9.0-r0               apk                             
+aom-libs                                                 3.9.1-r0               apk                             
 apache2-utils                                            2.4.62-r0              apk                             
 apk-tools                                                2.14.4-r0              apk                             
 append-buffer                                            1.0.2                  npm                             
