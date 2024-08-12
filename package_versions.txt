@@ -726,7 +726,7 @@ which-module                                             1.0.0                  
 wrap-ansi                                                2.1.0                  npm                             
 wrappy                                                   1.0.2                  npm                             
 xtend                                                    4.0.2                  npm                             
-xz-libs                                                  5.6.1-r3               apk                             
+xz-libs                                                  5.6.2-r0               apk                             
 y18n                                                     3.2.2                  npm                             
 yaml                                                     1.10.2                 npm                             
 yargs                                                    7.1.2                  npm                             
