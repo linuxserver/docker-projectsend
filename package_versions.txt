@@ -502,7 +502,7 @@ ncurses-terminfo-base                                    6.4_p20240420-r0       
 netcat-openbsd                                           1.226-r0               apk                             
 next-tick                                                1.1.0                  npm                             
 nghttp2-libs                                             1.62.1-r0              apk                             
-nginx                                                    1.26.1-r0              apk                             
+nginx                                                    1.26.2-r0              apk                             
 node-jen                                                 1.1.0                  npm                             
 node-releases                                            2.0.6                  npm                             
 normalize-package-data                                   2.5.0                  npm                             
