@@ -110,7 +110,7 @@ aom-libs                                                 3.9.1-r0               
 apache2-utils                                            2.4.62-r0              apk                             
 apk-tools                                                2.14.4-r0              apk                             
 append-buffer                                            1.0.2                  npm                             
-apr                                                      1.7.4-r0               apk                             
+apr                                                      1.7.5-r0               apk                             
 apr-util                                                 1.6.3-r1               apk                             
 archy                                                    1.0.0                  npm                             
 argon2-libs                                              20190702-r5            apk                             
@@ -239,7 +239,7 @@ color-parse                                              1.4.2                  
 color-support                                            1.1.3                  npm                             
 combined-stream                                          1.0.8                  npm                             
 component-emitter                                        1.3.0                  npm                             
-composer                                                 2.7.8                  binary                          
+composer                                                 2.7.9                  binary                          
 concat-map                                               0.0.1                  npm                             
 concat-stream                                            1.6.2                  npm                             
 concat-with-sourcemaps                                   1.1.0                  npm                             
@@ -253,7 +253,7 @@ coreutils-env                                            9.5-r1                 
 coreutils-fmt                                            9.5-r1                 apk                             
 coreutils-sha512sum                                      9.5-r1                 apk                             
 css                                                      3.0.0                  npm                             
-curl                                                     8.9.0-r0               apk                             
+curl                                                     8.9.1-r1               apk                             
 d                                                        1.0.1                  npm                             
 debug                                                    2.6.9                  npm                             
 debug                                                    3.2.7                  npm                             
@@ -427,12 +427,12 @@ libattr                                                  2.5.2-r0               
 libavif                                                  1.0.4-r0               apk                             
 libbsd                                                   0.12.2-r0              apk                             
 libbz2                                                   1.0.8-r6               apk                             
-libcrypto3                                               3.3.1-r3               apk                             
-libcurl                                                  8.9.0-r0               apk                             
+libcrypto3                                               3.3.2-r0               apk                             
+libcurl                                                  8.9.1-r1               apk                             
 libdav1d                                                 1.4.2-r0               apk                             
 libedit                                                  20240517.3.1-r0        apk                             
 libevent                                                 2.1.12-r7              apk                             
-libexpat                                                 2.6.2-r0               apk                             
+libexpat                                                 2.6.3-r0               apk                             
 libgcc                                                   13.2.1_git20240309-r0  apk                             
 libice                                                   1.1.1-r6               apk                             
 libidn2                                                  2.3.7-r0               apk                             
@@ -448,7 +448,7 @@ libpsl                                                   0.21.5-r1              
 libsasl                                                  2.1.28-r6              apk                             
 libsharpyuv                                              1.3.2-r0               apk                             
 libsm                                                    1.2.4-r4               apk                             
-libssl3                                                  3.3.1-r3               apk                             
+libssl3                                                  3.3.2-r0               apk                             
 libstdc++                                                13.2.1_git20240309-r0  apk                             
 libunistring                                             1.2-r0                 apk                             
 libuuid                                                  2.40.1-r1              apk                             
@@ -522,7 +522,7 @@ object.pick                                              1.3.0                  
 object.reduce                                            1.0.1                  npm                             
 once                                                     1.4.0                  npm                             
 oniguruma                                                6.9.9-r0               apk                             
-openssl                                                  3.3.1-r3               apk                             
+openssl                                                  3.3.2-r0               apk                             
 ordered-read-streams                                     1.0.1                  npm                             
 os-locale                                                1.4.0                  npm                             
 paragonie/random_compat                                  v2.0.21                php-composer                    
