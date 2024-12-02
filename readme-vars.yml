@@ -7,28 +7,24 @@ project_logo: "http://www.projectsend.org/wp-content/themes/projectsend/img/scre
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is a self-hosted application that lets you upload files and assign them to specific clients that you create yourself. Secure, private and easy. No more depending on external services or e-mail to send those files."
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
 project_blurb_optional_extras_enabled: false
-
 # supported architectures
 available_architectures:
-  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
-  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
-
-
+  - {arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - {arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
 # container parameters
 common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_net: false
 param_usage_include_env: true
 param_env_vars:
-  - { env_var: "MAX_UPLOAD", env_value: "5000", desc: "To set maximum upload size (in MB), default if unset is 5000." }
+  - {env_var: "MAX_UPLOAD", env_value: "5000", desc: "To set maximum upload size (in MB), default if unset is 5000."}
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Persistent config files" }
-  - { vol_path: "/data", vol_host_path: "/path/to/data", desc: "Where to store files to share." }
+  - {vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/config", desc: "Persistent config files"}
+  - {vol_path: "/data", vol_host_path: "/path/to/data", desc: "Where to store files to share."}
 param_usage_include_ports: true
 param_ports:
-  - { external_port: "80", internal_port: "80", port_desc: "WebUI" }
-
+  - {external_port: "80", internal_port: "80", port_desc: "WebUI"}
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
@@ -39,21 +35,75 @@ app_setup_block: |
   To use translations, follow the instructions [here](https://www.projectsend.org/how-to-use-translation-files/). The necessary paths are symlinked under `/config/translations` (note that the "templates" paths don't need `lang` subdirectories).
 
   More info at [ProjectSend]({{ project_url }}).
-
+# init diagram
+init_diagram: |
+  "projectsend:latest": {
+    docker-mods
+    base {
+      fix-attr +\nlegacy cont-init
+    }
+    docker-mods -> base
+    legacy-services
+    custom services
+    init-services -> legacy-services
+    init-services -> custom services
+    custom services -> legacy-services
+    legacy-services -> ci-service-check
+    init-migrations -> init-adduser
+    init-nginx-end -> init-config
+    init-os-end -> init-config
+    init-config -> init-config-end
+    init-projectsend-config -> init-config-end
+    init-os-end -> init-crontab-config
+    init-mods-end -> init-custom-files
+    base -> init-envfile
+    init-os-end -> init-folders
+    init-php -> init-keygen
+    base -> init-migrations
+    base -> init-mods
+    init-config-end -> init-mods
+    init-version-checks -> init-mods
+    init-mods -> init-mods-end
+    init-mods-package-install -> init-mods-end
+    init-mods -> init-mods-package-install
+    init-samples -> init-nginx
+    init-permissions -> init-nginx-end
+    base -> init-os-end
+    init-adduser -> init-os-end
+    init-envfile -> init-os-end
+    init-migrations -> init-os-end
+    init-keygen -> init-permissions
+    init-nginx -> init-php
+    init-nginx-end -> init-projectsend-config
+    init-folders -> init-samples
+    init-custom-files -> init-services
+    init-mods-end -> init-services
+    init-config-end -> init-version-checks
+    init-services -> svc-cron
+    svc-cron -> legacy-services
+    init-services -> svc-nginx
+    svc-nginx -> legacy-services
+    init-services -> svc-php-fpm
+    svc-php-fpm -> legacy-services
+  }
+  Base Images: {
+    "baseimage-alpine-nginx:3.20" <- "baseimage-alpine:3.20"
+  }
+  "projectsend:latest" <- Base Images
 # changelog
 changelogs:
-  - { date: "06.06.24:", desc: "Rebase to Alpine 3.20."}
-  - { date: "23.12.23:", desc: "Rebase to Alpine 3.19 with php 8.3."}
-  - { date: "25.05.23:", desc: "Rebase to Alpine 3.18, deprecate armhf." }
-  - { date: "08.03.23:", desc: "Rebasing to alpine 3.17 and upgrading to s6v3." }
-  - { date: "23.08.22:", desc: "Add translation support"}
-  - { date: "20.08.22:", desc: "Rebasing to alpine 3.15 with php8. Restructure nginx configs ([see changes announcement](https://info.linuxserver.io/issues/2022-08-20-nginx-base))." }
-  - { date: "24.06.21:", desc: "Rebasing to alpine 3.14, switch to nginx"}
-  - { date: "23.01.21:", desc: "Rebasing to alpine 3.13." }
-  - { date: "01.06.20:", desc: "Rebasing to alpine 3.12." }
-  - { date: "31.12.19:", desc: "Rebase to Alpine 3.11 and upgrade to PHP7." }
-  - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
-  - { date: "11.02.19:", desc: "Add pipeline logic and multi arch." }
-  - { date: "11.06.17:", desc: "Fetch version from github." }
-  - { date: "09.12.17:", desc: "Rebase to alpine 3.7." }
-  - { date: "13.06.17:", desc: "Initial Release." }
+  - {date: "06.06.24:", desc: "Rebase to Alpine 3.20."}
+  - {date: "23.12.23:", desc: "Rebase to Alpine 3.19 with php 8.3."}
+  - {date: "25.05.23:", desc: "Rebase to Alpine 3.18, deprecate armhf."}
+  - {date: "08.03.23:", desc: "Rebasing to alpine 3.17 and upgrading to s6v3."}
+  - {date: "23.08.22:", desc: "Add translation support"}
+  - {date: "20.08.22:", desc: "Rebasing to alpine 3.15 with php8. Restructure nginx configs ([see changes announcement](https://info.linuxserver.io/issues/2022-08-20-nginx-base))."}
+  - {date: "24.06.21:", desc: "Rebasing to alpine 3.14, switch to nginx"}
+  - {date: "23.01.21:", desc: "Rebasing to alpine 3.13."}
+  - {date: "01.06.20:", desc: "Rebasing to alpine 3.12."}
+  - {date: "31.12.19:", desc: "Rebase to Alpine 3.11 and upgrade to PHP7."}
+  - {date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag."}
+  - {date: "11.02.19:", desc: "Add pipeline logic and multi arch."}
+  - {date: "11.06.17:", desc: "Fetch version from github."}
+  - {date: "09.12.17:", desc: "Rebase to alpine 3.7."}
+  - {date: "13.06.17:", desc: "Initial Release."}
