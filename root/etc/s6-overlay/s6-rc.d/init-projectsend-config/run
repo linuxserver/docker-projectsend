@@ -1,12 +1,6 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
-if [[ -d /app/www/public-tmp ]]; then
-    echo "New container detected. Setting up app folder and fixing permissions."
-    mv /app/www/public-tmp /app/www/public
-    lsiown -R abc:abc /app
-fi
-
 # set default values for variables
 PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-512M}
 MAX_UPLOAD=${MAX_UPLOAD:-5000}
@@ -18,14 +12,17 @@ mkdir -p \
     /config/projectsend \
     /data/projectsend
 
-# configure php
-sed -i \
-    -e "s#;*memory_limit =.*#memory_limit = ${PHP_MEMORY_LIMIT}#i" \
-    -e "s#;*upload_max_filesize =.*#upload_max_filesize = ${USABLE_MAX_UPLOAD}M#i" \
-    -e "s#;*max_file_uploads =.*#max_file_uploads = ${PHP_MAX_FILE_UPLOAD}#i" \
-    -e "s#;*post_max_size =.*#post_max_size = ${USABLE_MAX_UPLOAD}M#i" \
-    -e "s#;*cgi.fix_pathinfo=.*#cgi.fix_pathinfo= 0#i" \
-    /etc/php83/conf.d/projectsend.ini
+if [[ ! -f "/config/php/projectsend.ini" ]]; then
+    cp /defaults/projectsend.ini /config/php/projectsend.ini
+
+    sed -i \
+        -e "s#;*memory_limit =.*#memory_limit = ${PHP_MEMORY_LIMIT}#i" \
+        -e "s#;*upload_max_filesize =.*#upload_max_filesize = ${USABLE_MAX_UPLOAD}M#i" \
+        -e "s#;*max_file_uploads =.*#max_file_uploads = ${PHP_MAX_FILE_UPLOAD}#i" \
+        -e "s#;*post_max_size =.*#post_max_size = ${USABLE_MAX_UPLOAD}M#i" \
+        -e "s#;*cgi.fix_pathinfo=.*#cgi.fix_pathinfo= 0#i" \
+        /config/php/projectsend.ini
+fi
 
 # copy config
 PREV_DIR=$(pwd)
@@ -114,6 +111,8 @@ shopt -u globstar dotglob
 
 # permissions
 lsiown -R abc:abc \
-    /config
+    /config \
+    /app/www/public
+
 lsiown abc:abc \
     /data/projectsend
