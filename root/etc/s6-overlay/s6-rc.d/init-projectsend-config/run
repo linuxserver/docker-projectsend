@@ -112,7 +112,7 @@ shopt -u globstar dotglob
 # permissions
 lsiown -R abc:abc \
     /config \
-    /app/www/public
+    /app/www/public/cache
 
 lsiown abc:abc \
     /data/projectsend
