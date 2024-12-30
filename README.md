@@ -59,9 +59,9 @@ The architectures supported by this image are:
 
 ## Application Setup
 
-*IMPORTANT* This image no longer supports MSSQL since being migrated to PHP7, if you want MSSQL support please use the tag `linuxserver/projectsend:r1053-ls27`
-
 Requires a user and database in either mysql or mariadb.
+
+To set PHP options like max upload size please edit /config/php/projectsend.ini
 
 To use translations, follow the instructions [here](https://www.projectsend.org/how-to-use-translation-files/). The necessary paths are symlinked under `/config/translations` (note that the "templates" paths don't need `lang` subdirectories).
 
@@ -86,7 +86,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - MAX_UPLOAD=5000
     volumes:
       - /path/to/projectsend/config:/config
       - /path/to/data:/data
@@ -103,7 +102,6 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
-  -e MAX_UPLOAD=5000 \
   -p 80:80 \
   -v /path/to/projectsend/config:/config \
   -v /path/to/data:/data \
@@ -121,7 +119,6 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
-| `-e MAX_UPLOAD=5000` | To set maximum upload size (in MB), default if unset is 5000. |
 | `-v /config` | Persistent config files |
 | `-v /data` | Where to store files to share. |
 
@@ -287,6 +284,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **21.12.24:** - Rebase to Alpine 3.21.
 * **06.06.24:** - Rebase to Alpine 3.20.
 * **23.12.23:** - Rebase to Alpine 3.19 with php 8.3.
 * **25.05.23:** - Rebase to Alpine 3.18, deprecate armhf.
