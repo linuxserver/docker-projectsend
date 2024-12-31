@@ -115,4 +115,5 @@ lsiown -R abc:abc \
     /app/www/public/cache
 
 lsiown abc:abc \
-    /data/projectsend
+    /data/projectsend \
+    /app/www/public/includes/sys.config.php
