@@ -116,4 +116,4 @@ lsiown -R abc:abc \
 
 lsiown abc:abc \
     /data/projectsend \
-    /app/www/public/includes/sys.config.php
+    /app/www/public/includes
