@@ -94,8 +94,8 @@ NAME                                                     VERSION           TYPE
 @yaireo/tagify                                           4.12.0            npm                             
 acl-libs                                                 2.3.2-r1          apk                             
 acorn                                                    6.4.2             npm                             
-alpine-baselayout                                        3.6.8-r0          apk                             
-alpine-baselayout-data                                   3.6.8-r0          apk                             
+alpine-baselayout                                        3.6.8-r1          apk                             
+alpine-baselayout-data                                   3.6.8-r1          apk                             
 alpine-keys                                              2.5-r0            apk                             
 alpine-release                                           3.21.0-r0         apk                             
 ansi-colors                                              1.1.0             npm                             
@@ -206,8 +206,8 @@ buffer-from                                              1.1.2             npm
 busybox                                                  1.37.0-r9         apk                             
 busybox-binsh                                            1.37.0-r9         apk                             
 c-ares                                                   1.34.3-r0         apk                             
-ca-certificates                                          20241010-r0       apk                             
-ca-certificates-bundle                                   20241010-r0       apk                             
+ca-certificates                                          20241121-r0       apk                             
+ca-certificates-bundle                                   20241121-r0       apk                             
 cache-base                                               1.0.1             npm                             
 call-bind                                                1.0.2             npm                             
 camelcase                                                3.0.0             npm           (+1 duplicate)    
@@ -506,7 +506,7 @@ ncurses-terminfo-base                                    6.5_p20241006-r3  apk
 netcat-openbsd                                           1.226.1.1-r0      apk                             
 next-tick                                                1.1.0             npm                             
 nghttp2-libs                                             1.64.0-r0         apk                             
-nginx                                                    1.26.2-r3         apk                             
+nginx                                                    1.26.2-r4         apk                             
 node-jen                                                 1.1.0             npm                             
 node-releases                                            2.0.6             npm                             
 normalize-package-data                                   2.5.0             npm                             
@@ -737,4 +737,4 @@ yaml                                                     1.10.2            npm
 yargs                                                    7.1.2             npm                             
 yargs-parser                                             5.0.1             npm                             
 zlib                                                     1.3.1-r2          apk                             
-zstd-libs                                                1.5.6-r1          apk                             
+zstd-libs                                                1.5.6-r2          apk                             
