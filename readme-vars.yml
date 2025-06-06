@@ -27,6 +27,8 @@ app_setup_block_enabled: true
 app_setup_block: |
   Requires a user and database in either mysql or mariadb.
 
+  crontab for scheduled tasks should be added to /config/crontabs/abc and the container restarted to enable.
+
   To set PHP options like max upload size please edit /config/php/projectsend.ini
 
   To use translations, follow the instructions [here](https://www.projectsend.org/how-to-use-translation-files/). The necessary paths are symlinked under `/config/translations` (note that the "templates" paths don't need `lang` subdirectories).
@@ -86,6 +88,7 @@ init_diagram: |
   "projectsend:latest" <- Base Images
 # changelog
 changelogs:
+  - {date: "06.06.25:", desc: "Add crontab handler for scheduled tasks."}
   - {date: "21.12.24:", desc: "Rebase to Alpine 3.21, move php .ini file to /config/php."}
   - {date: "06.06.24:", desc: "Rebase to Alpine 3.20."}
   - {date: "23.12.23:", desc: "Rebase to Alpine 3.19 with php 8.3."}

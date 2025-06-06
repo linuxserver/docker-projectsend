@@ -109,6 +109,12 @@ done
 
 shopt -u globstar dotglob
 
+# handle crontab if configured
+mkdir -p /config/crontabs
+touch /config/crontabs/abc
+lsiown abc:abc /config/crontabs/abc
+crontab -u abc /config/crontabs/abc
+
 # permissions
 lsiown -R abc:abc \
     /config \
@@ -117,3 +123,5 @@ lsiown -R abc:abc \
 lsiown abc:abc \
     /data/projectsend \
     /app/www/public/includes
+
+chmod 755 /app/www/public/emails
