@@ -108,7 +108,7 @@ ansi-wrap                                                0.1.0             npm
 anymatch                                                 2.0.0             npm                             
 anymatch                                                 3.1.2             npm                             
 aom-libs                                                 3.11.0-r0         apk                             
-apache2-utils                                            2.4.62-r0         apk                             
+apache2-utils                                            2.4.64-r0         apk                             
 apk-tools                                                2.14.6-r3         apk                             
 append-buffer                                            1.0.2             npm                             
 apr                                                      1.7.5-r0          apk                             
