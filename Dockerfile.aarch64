@@ -42,6 +42,17 @@ RUN \
     /tmp/projectsend.zip -d \
     /app/www/public && \
   mv /app/www/public/upload /defaults/ && \
+  echo "**** download default lang files ****" && \
+  mkdir -p /defaults/lang && \
+  curl -fso \
+    /defaults/lang/default.pot -L \
+    "https://raw.githubusercontent.com/projectsend/projectsend/refs/heads/develop/templates/default/lang/default.pot" && \
+  curl -fso \
+    /defaults/lang/en.mo -L \
+    "https://raw.githubusercontent.com/projectsend/projectsend/refs/heads/develop/templates/default/lang/en.mo" && \
+  curl -fso \
+    /defaults/lang/en.po -L \
+    "https://raw.githubusercontent.com/projectsend/projectsend/refs/heads/develop/templates/default/lang/en.po" && \
   printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
   echo "**** cleanup ****" && \
     rm -rf \

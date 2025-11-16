@@ -59,14 +59,6 @@ mkdir -p /config/translations
 
 shopt -s globstar dotglob
 
-#check if there are newer translation files in the container and if so copy them to /config
-if [[ -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
-    for file in /app/www/public/lang/*; do
-        if [ $(date -r "$file" +%s) -ge $(date -r "/config/translations/lang/$(echo $file | awk -F '/' '{print $(NF)}')" +%s) ]; then
-            cp "$file" /config/translations/lang/
-        fi
-    done
-fi
 # symlink translations
 if [[ -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
     rm -rf /app/www/public/lang
@@ -76,6 +68,17 @@ if [[ ! -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
 fi
 if [[ -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
     ln -s /config/translations/lang /app/www/public/lang
+fi
+
+#check if there are newer default translation files in the container and if so copy them to /config
+if [[ ! -f /config/translations/lang/en.po ]] || [[ ! -f /config/translations/lang/en.mo ]]; then
+    cp /defaults/lang/* /config/translations/lang/
+else
+    for file in /defaults/lang/*; do
+        if [ $(date -r "$file" +%s) -ge $(date -r "/config/translations/lang/$(echo $file | awk -F '/' '{print $(NF)}')" +%s) ]; then
+            cp "$file" /config/translations/lang/
+        fi
+    done
 fi
 
 symlinks=(
