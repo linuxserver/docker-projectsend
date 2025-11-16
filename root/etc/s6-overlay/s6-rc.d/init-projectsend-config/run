@@ -80,7 +80,7 @@ symlinks=(
 )
 
 for i in "${symlinks[@]}"; do
-    path=$(echo "${i}" | awk -F '/' '{print $(NF-1)"/"$NF}')
+    path=$(echo "${i}" | awk -F '/' '{print $(NF-1)}')
     # symlink translations
     if [[ -d /config/translations/"$path" && ! -L "${i}" ]]; then
         rm -rf "${i}"

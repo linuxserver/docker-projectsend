@@ -45,9 +45,6 @@ RUN \
   echo "**** download default lang files ****" && \
   mkdir -p /defaults/lang && \
   curl -fso \
-    /defaults/lang/default.pot -L \
-    "https://raw.githubusercontent.com/projectsend/projectsend/refs/heads/develop/templates/default/lang/default.pot" && \
-  curl -fso \
     /defaults/lang/en.mo -L \
     "https://raw.githubusercontent.com/projectsend/projectsend/refs/heads/develop/templates/default/lang/en.mo" && \
   curl -fso \
