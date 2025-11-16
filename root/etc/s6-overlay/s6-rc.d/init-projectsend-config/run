@@ -56,10 +56,9 @@ fi
 
 #Handle translations
 mkdir -p /config/translations
-
 shopt -s globstar dotglob
 
-# symlink translations
+#check if there are newer translation files in the container and if so copy them to /config
 if [[ -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
     rm -rf /app/www/public/lang
 fi
@@ -69,16 +68,9 @@ fi
 if [[ -d /config/translations/lang && ! -L /app/www/public/lang ]]; then
     ln -s /config/translations/lang /app/www/public/lang
 fi
-
-#check if there are newer default translation files in the container and if so copy them to /config
 if [[ ! -f /config/translations/lang/en.po ]] || [[ ! -f /config/translations/lang/en.mo ]]; then
+    mkdir -p /config/translations/lang
     cp /defaults/lang/* /config/translations/lang/
-else
-    for file in /defaults/lang/*; do
-        if [ $(date -r "$file" +%s) -ge $(date -r "/config/translations/lang/$(echo $file | awk -F '/' '{print $(NF)}')" +%s) ]; then
-            cp "$file" /config/translations/lang/
-        fi
-    done
 fi
 
 symlinks=(
@@ -88,26 +80,21 @@ symlinks=(
 )
 
 for i in "${symlinks[@]}"; do
-    path=$(echo "$i" | awk -F '/' '{print $(NF-1)"/"$NF}')
-    #check if there are newer translation files in the container and if so copy them to /config
-    if [[ -d /config/translations/"$path" && ! -L "$i" ]]; then
-        for file in "$i"/*; do
-            if [ $(date -r "$file" +%s) -ge $(date -r "/config/translations/$(echo $i | awk -F '/' '{print $(NF-1)}')/$(echo $file | awk -F '/' '{print $(NF)}')" +%s) ]; then
-                cp "$file" "/config/translations/$(echo $i | awk -F '/' '{print $(NF-1)}')"
-            fi
-        done
-    fi
+    path=$(echo "${i}" | awk -F '/' '{print $(NF-1)"/"$NF}')
     # symlink translations
-    if [[ -d /config/translations/"$path" && ! -L "$i" ]]; then
-        rm -rf "$i"
+    if [[ -d /config/translations/"$path" && ! -L "${i}" ]]; then
+        rm -rf "${i}"
     fi
-    if [[ ! -d /config/translations/"$path" && ! -L "$i" ]]; then
-        mv "$i" /config/translations/"$(echo $i | awk -F '/' '{print $(NF-1)}')"
+    if [[ ! -d /config/translations/"$path" && ! -L "${i}" ]]; then
+        mv "$i" /config/translations/"$(echo "${i}" | awk -F '/' '{print $(NF-1)}')"
     fi
-    if [[ -d /config/translations/"$path" && ! -L "$i" ]]; then
-        ln -s /config/translations/"$path" "$i"
+    if [[ -d /config/translations/"$path" && ! -L "${i}" ]]; then
+        ln -s /config/translations/"$path" "${i}"
     fi
-
+    if [[ ! -f /config/translations/"$path"/en.po ]] || [[ ! -f /config/translations/"$path"/en.mo ]]; then
+        mkdir -p /config/translations/"$path"
+        cp /defaults/lang/* /config/translations/"$path"/
+    fi
 done
 
 shopt -u globstar dotglob
