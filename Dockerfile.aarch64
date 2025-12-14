@@ -19,6 +19,7 @@ RUN \
     php84-gd \
     php84-gettext \
     php84-gmp \
+    php84-ldap \
     php84-mysqli \
     php84-pdo \
     php84-pdo_dblib \

@@ -88,6 +88,7 @@ init_diagram: |
   "projectsend:latest" <- Base Images
 # changelog
 changelogs:
+  - {date: "14.12.25:", desc: "Add php ldap module."}
   - {date: "16.11.25:", desc: "Add missing language files to default install."}
   - {date: "14.10.25:", desc: "Rebase to 3.22."}
   - {date: "06.06.25:", desc: "Add crontab handler for scheduled tasks."}
