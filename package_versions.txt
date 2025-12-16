@@ -59,6 +59,7 @@ libice                         1.1.2-r0              apk
 libidn2                        2.3.7-r0              apk             
 libintl                        0.24.1-r0             apk             
 libjpeg-turbo                  3.1.0-r0              apk             
+libldap                        2.6.8-r0              apk             
 libmd                          1.1.0-r0              apk             
 libmemcached-libs              1.1.4-r1              apk             
 libncursesw                    6.5_p20250503-r0      apk             
@@ -111,6 +112,7 @@ php84-gd                       8.4.14-r0             apk
 php84-gettext                  8.4.14-r0             apk             
 php84-gmp                      8.4.14-r0             apk             
 php84-iconv                    8.4.14-r0             apk             
+php84-ldap                     8.4.14-r0             apk             
 php84-mbstring                 8.4.14-r0             apk             
 php84-mysqli                   8.4.14-r0             apk             
 php84-mysqlnd                  8.4.14-r0             apk             
