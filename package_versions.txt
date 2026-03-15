@@ -11,7 +11,7 @@ apr                            1.7.5-r0              apk
 apr-util                       1.6.3-r1              apk             
 argon2-libs                    20190702-r5           apk             
 aws/aws-crt-php                v1.2.7                php-composer    
-aws/aws-sdk-php                3.356.27              php-composer    
+aws/aws-sdk-php                3.369.25              php-composer    
 bash                           5.2.37-r0             apk             
 brotli-libs                    1.1.0-r2              apk             
 busybox                        1.37.0-r20            apk             
@@ -146,9 +146,11 @@ shadow                         4.17.3-r0             apk
 skalibs-libs                   2.14.4.0-r0           apk             
 ssl_client                     1.37.0-r20            apk             
 symfony/deprecation-contracts  v3.6.0                php-composer    
+symfony/filesystem             v7.4.0                php-composer    
+symfony/polyfill-ctype         v1.33.0               php-composer    
 symfony/polyfill-mbstring      v1.33.0               php-composer    
 tamtamchik/simple-flash        2.0.1                 php-composer    
-tzdata                         2025c-r0              apk             
+tzdata                         2026a-r0              apk             
 unixodbc                       2.3.12-r0             apk             
 utmps-libs                     0.1.3.1-r0            apk             
 xz-libs                        5.8.1-r0              apk             
