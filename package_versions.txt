@@ -25,7 +25,7 @@ chillerlan/php-settings-container  3.3.0                 php-composer
 claviska/simpleimage               3.7.2                 php-composer    
 cocur/slugify                      v4.6.0                php-composer    
 codemirror-minified                5.65.2                npm             
-composer                           2.9.8                 binary          
+composer                           2.10.0                binary          
 coreutils                          9.7-r1                apk             
 coreutils-env                      9.7-r1                apk             
 coreutils-fmt                      9.7-r1                apk             
