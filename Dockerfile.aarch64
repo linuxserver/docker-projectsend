@@ -31,14 +31,14 @@ RUN \
   echo "**** install projectsend ****" && \
   mkdir -p /app/www/public && \
   if [ -z ${PROJECTSEND_VERSION+x} ]; then \
-    PROJECTSEND_VERSION=$(curl -s https://api.github.com/repos/projectsend/projectsend/releases/latest | jq -r '. | .tag_name'); \
+    PROJECTSEND_VERSION=$(curl -s https://api.github.com/repos/projectsend/legacy/releases/latest | jq -r '. | .tag_name'); \
   fi && \
   curl -fso \
     /tmp/projectsend.zip -L \
-    "https://github.com/projectsend/projectsend/releases/download/${PROJECTSEND_VERSION}/projectsend-${PROJECTSEND_VERSION}.zip" || \
+    "https://github.com/projectsend/legacy/releases/download/${PROJECTSEND_VERSION}/projectsend-${PROJECTSEND_VERSION}.zip" || \
   curl -fso \
     /tmp/projectsend.zip -L \
-    "https://github.com/projectsend/projectsend/releases/download/${PROJECTSEND_VERSION}/projectsend.zip" && \
+    "https://github.com/projectsend/legacy/releases/download/${PROJECTSEND_VERSION}/projectsend.zip" && \
   unzip \
     /tmp/projectsend.zip -d \
     /app/www/public && \
@@ -47,10 +47,10 @@ RUN \
   mkdir -p /defaults/lang && \
   curl -fso \
     /defaults/lang/en.mo -L \
-    "https://raw.githubusercontent.com/projectsend/projectsend/refs/heads/develop/templates/default/lang/en.mo" && \
+    "https://raw.githubusercontent.com/projectsend/legacy/refs/heads/develop/templates/default/lang/en.mo" && \
   curl -fso \
     /defaults/lang/en.po -L \
-    "https://raw.githubusercontent.com/projectsend/projectsend/refs/heads/develop/templates/default/lang/en.po" && \
+    "https://raw.githubusercontent.com/projectsend/legacy/refs/heads/develop/templates/default/lang/en.po" && \
   printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
   echo "**** cleanup ****" && \
     rm -rf \

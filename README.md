@@ -283,6 +283,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **10.08.26:** - Switch to legacy repo until migration steps are figured out.
 * **14.12.25:** - Add php ldap module.
 * **16.11.25:** - Add missing language files to default install.
 * **14.10.25:** - Rebase to 3.22.
