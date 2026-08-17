@@ -8,7 +8,7 @@ aom-libs                           3.12.1-r0             apk
 apache2-utils                      2.4.68-r0             apk             
 apk-tools                          2.14.10-r0            apk             
 apr                                1.7.5-r0              apk             
-apr-util                           1.6.3-r1              apk             
+apr-util                           1.6.4-r0              apk             
 argon2-libs                        20190702-r5           apk             
 aws/aws-crt-php                    v1.2.7                php-composer    
 aws/aws-sdk-php                    3.388.5               php-composer    
