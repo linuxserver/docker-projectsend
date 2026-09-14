@@ -43,7 +43,7 @@ guzzlehttp/guzzle                  7.14.1                php-composer
 guzzlehttp/promises                2.5.1                 php-composer    
 guzzlehttp/psr7                    2.12.5                php-composer    
 hybridauth/hybridauth              v3.13.0               php-composer    
-jq                                 1.8.1-r0              apk             
+jq                                 1.8.2-r0              apk             
 league/color-extractor             0.3.2                 php-composer    
 libapk2                            2.14.10-r0            apk             
 libattr                            2.5.2-r2              apk             
@@ -74,7 +74,7 @@ libsm                              1.2.5-r0              apk
 libssl3                            3.5.8-r0              apk             
 libstdc++                          14.2.0-r6             apk             
 libunistring                       1.3-r0                apk             
-libuuid                            2.41-r9               apk             
+libuuid                            2.41.6-r1             apk             
 libwebp                            1.5.0-r0              apk             
 libx11                             1.8.11-r0             apk             
 libxau                             1.0.12-r0             apk             
@@ -159,6 +159,6 @@ tamtamchik/simple-flash            2.0.1                 php-composer
 tzdata                             2026c-r0              apk             
 unixodbc                           2.3.12-r0             apk             
 utmps-libs                         0.1.3.1-r0            apk             
-xz-libs                            5.8.3-r0              apk             
+xz-libs                            5.8.4-r0              apk             
 zlib                               1.3.2-r0              apk             
 zstd-libs                          1.5.7-r0              apk             
