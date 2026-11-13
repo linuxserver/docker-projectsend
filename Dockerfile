@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.22
+FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.24
 
 # set version label
 ARG BUILD_DATE
@@ -12,22 +12,22 @@ LABEL maintainer="TheSpad"
 RUN \
   echo "**** install runtime packages ****" && \
   apk add --no-cache \
-    php84-bcmath \
-    php84-bz2 \
-    php84-cli \
-    php84-dom \
-    php84-gd \
-    php84-gettext \
-    php84-gmp \
-    php84-ldap \
-    php84-mysqli \
-    php84-pdo \
-    php84-pdo_dblib \
-    php84-pdo_mysql \
-    php84-pecl-apcu \
-    php84-pecl-memcached \
-    php84-soap \
-    php84-xmlreader && \
+    php85-bcmath \
+    php85-bz2 \
+    php85-cli \
+    php85-dom \
+    php85-gd \
+    php85-gettext \
+    php85-gmp \
+    php85-ldap \
+    php85-mysqli \
+    php85-pdo \
+    php85-pdo_dblib \
+    php85-pdo_mysql \
+    php85-pecl-apcu \
+    php85-pecl-memcached \
+    php85-soap \
+    php85-xmlreader && \
   echo "**** install projectsend ****" && \
   mkdir -p /app/www/public && \
   if [ -z ${PROJECTSEND_VERSION+x} ]; then \
